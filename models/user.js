@@ -15,6 +15,11 @@ const userSchema = new Schema({
       Country: String
     },
     phoneNumber: String,
+    role: {
+       type: String,
+       enum : ['PETTAKER', 'OWNER','BOTH'],
+       default : 'OWNER'
+     }
     isPetTaker : { type: Boolean, default: false },
     //stuff needed for pet taker
 
