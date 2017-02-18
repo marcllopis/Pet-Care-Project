@@ -19,7 +19,7 @@ const userSchema = new Schema({
        type: String,
        enum : ['PETTAKER', 'OWNER','BOTH'],
        default : 'OWNER'
-     }
+     },
     isPetTaker : { type: Boolean, default: false },
     //stuff needed for pet taker
 

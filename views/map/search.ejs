@@ -1,0 +1,16 @@
+<h1>Here is the Map with all users around you!</h1>
+
+<div class="row">
+  <div  style="background-color:lightgrey;" class="col-md-5">
+    <h2> HERE WE PLACE THE MAP</h2>
+  </div>
+  <div style="background-color:lightblue;" class="col-md-7">
+    <h2> HERE WE PLACE THE LIST OF USERS</h2>
+    <ul>
+  <% takers.forEach((taker) => { %>
+    <li>
+      Name: <b><%= taker.name %></b>  | Surname: <b><%= taker.surname %></b> <button class="btn btn-warning">Check full profile</button></li><br>
+  <%  }) %>
+</ul>
+  </div>
+</div>
