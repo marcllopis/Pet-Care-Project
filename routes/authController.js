@@ -1,5 +1,5 @@
-var express = require('express');
-const passport = require("passport");
+var express          = require('express');
+const passport       = require("passport");
 const bcrypt         = require("bcrypt");
 const User           = require("../models/user");
 
@@ -12,18 +12,20 @@ router.get('/signup', function(req, res, next) {
 });
 
 router.post("/signup", (req, res, next) => {
-  var username = req.body.username;
+  var name     = req.body.name;
+  var surname  = req.body.surname;
+  var email    = req.body.email;
   var password = req.body.password;
 
-  if (username === "" || password === "") {
-  	req.flash('error', 'Indicate username and password' );
+  if (name === "" || surname === "" || email === "" || password === "" ) {
+  	req.flash('error', 'Indicate name, surname, email and password' );
     res.render("auth/signup", { "message": req.flash("error") });
     return;
   }
 
-  User.findOne({ username }, "username", (err, user) => {
+  User.findOne({ email }, "email", (err, user) => {
     if (user !== null) {
-    	req.flash('error', 'The username already exists' );
+    	req.flash('error', 'The email already exists' );
       res.render("auth/signup", { message: req.flash("error") });
       return;
     }
@@ -32,13 +34,15 @@ router.post("/signup", (req, res, next) => {
     var hashPass = bcrypt.hashSync(password, salt);
 
     var newUser = User({
-      username,
+      name,
+      surname,
+      email,
       password: hashPass
     });
 
     newUser.save((err) => {
       if (err) {
-      	req.flash('error', 'The username already exists' );
+      	req.flash('error', 'The email address already exists' );
         res.render("auth/signup", { message: req.flash('error') });
       } else {
         passport.authenticate("local")(req, res, function () {
