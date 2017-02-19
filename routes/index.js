@@ -4,7 +4,7 @@ var router = express.Router();
 var auth = require('../helpers/auth');
 const User           = require("../models/user");
 
-
+//route to show a list of users on the search page
 router.get('/search', (req, res, next) => {
   User.find({}, (err, takers) => {
 
@@ -15,6 +15,19 @@ router.get('/search', (req, res, next) => {
     });
   });
 });
+
+
+router.get('/users/:takerId', auth.checkLoggedIn('You must be login', '/login'), (req, res, next) => {
+  let takerId = req.params.takerId;
+  User.findById(takerId, (err, takers) => {
+    if (err) {  next(err); }
+    console.log("here is the takers info");
+    console.log(takers);
+    console.log("-------------------------");
+    res.render('takerInfo/taker', { takers: takers });
+  });
+});
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });

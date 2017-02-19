@@ -10,7 +10,7 @@ button a {
 	padding-top: 50px;
 }
 .footer {
-	position: absolute;
+	position: fixed;
 	bottom: 0;
 	width: 100%;
 	/* Set the fixed height of the footer here */
@@ -32,4 +32,49 @@ button a {
 	width: 380px;
 	padding-top: 50px;
 	margin: 0 auto;
+}
+
+.img-taker-custom {
+  width: 150px;
+  height: auto;
+}
+
+.takers-container-custom{
+  width: 70%;
+}
+
+.takers-header{
+  width: 60%;
+}
+
+.takers-header-bg{
+  background-color: rgb(242, 242, 242);
+
+}
+
+.img-pet-taker-custom{
+  width: 350px;
+  height: auto;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.img-reviewer-custom{
+  width: 100px;
+  height: auto;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.text-justify{
+  text-align: justify;
+}
+
+.book-taker-box{
+  -webkit-box-shadow: 11px 14px 38px -21px rgba(0,0,0,0.58);
+  -moz-box-shadow: 11px 14px 38px -21px rgba(0,0,0,0.58);
+  box-shadow: 11px 14px 38px -21px rgba(0,0,0,0.58);
+  border-radius: 10px;
+  border: 1px solid grey;
+  padding: 20px;
 }
