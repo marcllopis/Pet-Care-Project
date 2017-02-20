@@ -5,16 +5,22 @@ var auth = require('../helpers/auth');
 const User           = require("../models/user");
 
 //route to show a list of users on the search page
-router.get('/search', (req, res, next) => {
-  User.find({}, (err, takers) => {
+router.get('/search/:format?', (req, res, next) => {
+  User.find({},(err, takers) => {
 
-    if (err) { return next(err) }
+    if (err) {
+      return next(err);
+    }
 
-    res.render('map/search', {
-      takers: takers
-    });
+    if(req.params.format === "json"){
+      res.json((takers));
+    } else {
+      console.log(takers);
+    res.render('map/search', {takers:takers});
+    }
   });
 });
+
 
 
 router.get('/users/:takerId', auth.checkLoggedIn('You must be login', '/login'), (req, res, next) => {

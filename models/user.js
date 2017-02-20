@@ -9,8 +9,8 @@ const userSchema = new Schema({
     profilePicture: String, //Need to check how to do it
     address: String,
     location:{
-      lat: String,
-      long: String
+      lat: Number,
+      long: Number
     },
     phoneNumber: String,
     role: {

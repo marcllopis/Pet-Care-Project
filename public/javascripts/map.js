@@ -17,8 +17,31 @@ function initAutocomplete() {
       map.addListener('bounds_changed', function() {
         searchBox.setBounds(map.getBounds());
       });
+      // console.log(myTakers);
 
-      var markers = [];
+      let markers = [];
+
+      $.ajax({
+        url: "http://localhost:3000/search/json",
+        type: "get",
+        success: function(response){
+          console.log(response);
+          response.forEach(function(response){
+            let title = response.name
+            let position = {
+              lat: response.location.lat,
+              lng: response.location.long
+            };
+            var pin = new google.maps.Marker({ position, map, title  });
+            markers.push(pin)
+
+          });
+          console.log(response)
+        },
+        error: function(error){console.log(error)}
+      })
+
+
       // Listen for the event fired when the user selects a prediction and retrieve
       // more details for that place.
       searchBox.addListener('places_changed', function() {
@@ -48,7 +71,7 @@ function initAutocomplete() {
           if (place.geometry.viewport) {
             // Only geocodes have viewport.
             bounds.union(place.geometry.viewport);
-          } else {89
+          } else {
             bounds.extend(place.geometry.location);
           }
         });
