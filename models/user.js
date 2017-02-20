@@ -24,7 +24,7 @@ const userSchema = new Schema({
     pets: Array,
     description: String,
     price: Number,
-    Slogan: String,
+    slogan: String,
     status: String
 	}, {
 

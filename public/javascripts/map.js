@@ -1,7 +1,7 @@
 function initAutocomplete() {
       var map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -33.8688, lng: 151.2195},
-        zoom: 13,
+        center: {lat: 41.40257319999999, lng: 2.1971181000000115},
+        zoom: 15,
         mapTypeId: 'roadmap'
 
       });
@@ -24,16 +24,19 @@ function initAutocomplete() {
         type: "get",
         success: function(response){
           console.log(response);
-          response.forEach(function(response){
-            let title = response.name
-            let position = {
-              lat: response.location.lat,
-              lng: response.location.long
-            };
-            var pin = new google.maps.Marker({ position, map, title  });
-            markers.push(pin)
 
+          response.forEach(function(response){
+            if (response.role === "PETTAKER") {
+              let title = response.name
+              let position = {
+                lat: response.location.lat,
+                lng: response.location.long
+              };
+              var pin = new google.maps.Marker({ position, map, title  });
+              markers.push(pin)
+            }
           });
+
           console.log(response)
         },
         error: function(error){console.log(error)}

@@ -90,6 +90,176 @@ const takers = [
     slogan: 'Master of fishes',
     status: 'only weekend'
   },
+  {
+    name: 'Ironhacker',
+    surname: 'Coder',
+    email: 'ironhacker@gmail.com',
+    password: 'ironpass',
+    role: 'PETTAKER',
+    location:{
+      lat: 41.3843889,
+      long: 2.169593099999929
+    },
+    address: 'Code City',
+    phoneNumber: '+34677798451',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    price: 15,
+    slogan: 'Coding pets all day',
+    status: 'only weekend'
+  },
+  {
+    name: 'Darth Vader',
+    surname: 'Skywalker',
+    email: 'darth@gmail.com',
+    password: 'aquapass',
+    role: 'PETTAKER',
+    location:{
+      lat:41.405859,
+      long: -8.523700100000042
+    },
+    address: 'Beach City',
+    phoneNumber: '+34677798451',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    price: 15,
+    slogan: 'Master of fishes',
+    status: 'only weekend'
+  },
+  {
+    name: 'Luke',
+    surname: 'Skywalker',
+    email: 'luke@gmail.com',
+    password: 'lukepass',
+    role: 'PETTAKER',
+    location:{
+      lat:41.39580509999999,
+      long:2.1918571999999585
+    },
+    address: 'Beach City',
+    phoneNumber: '+34677798451',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    price: 15,
+    slogan: 'Master of fishes',
+    status: 'only weekend'
+  },
+  {
+    name: 'Jar Jar',
+    surname: 'Binks',
+    email: 'jarjar@gmail.com',
+    password: 'jarpass',
+    role: 'PETTAKER',
+    location:{
+      lat:41.3969391,
+      long:2.189640700000041
+    },
+    address: 'Beach City',
+    phoneNumber: '+34677798451',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    price: 15,
+    slogan: 'Master of fishes',
+    status: 'only weekend'
+  },
+  {
+    name: 'Frodo',
+    surname: 'Baggins',
+    email: 'frodo@gmail.com',
+    password: 'frodopass',
+    role: 'PETTAKER',
+    location:{
+      lat:41.40503289999999,
+      long:2.19103419999999
+    },
+    address: 'Beach City',
+    phoneNumber: '+34677798451',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    price: 15,
+    slogan: 'Master of fishes',
+    status: 'only weekend'
+  },
+  {
+    name: 'Gollum',
+    surname: 'Precious',
+    email: 'gollum@gmail.com',
+    password: 'gollumpass',
+    role: 'PETTAKER',
+    location:{
+      lat:40.4137818,
+      long:-3.6921270999999933
+    },
+    address: 'Beach City',
+    phoneNumber: '+34677798451',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    price: 15,
+    slogan: 'Master of fishes',
+    status: 'only weekend'
+  },
+  {
+    name: 'Gandalf',
+    surname: 'Grey',
+    email: 'gandalf@gmail.com',
+    password: 'gandalfpass',
+    role: 'PETTAKER',
+    location:{
+      lat:41.39581630000001,
+      long:2.1887362999999596
+    },
+    address: 'Beach City',
+    phoneNumber: '+34677798451',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    price: 15,
+    slogan: 'Master of fishes',
+    status: 'only weekend'
+  },
+  {
+    name: 'Ironman',
+    surname: 'Stark',
+    email: 'Ironman@gmail.com',
+    password: 'ironpass',
+    role: 'PETTAKER',
+    location:{
+      lat:41.4080056,
+      long:2.1902811999999585
+    },
+    address: 'Beach City',
+    phoneNumber: '+34677798451',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    price: 15,
+    slogan: 'Master of fishes',
+    status: 'only weekend'
+  },
+  {
+    name: 'Jaime',
+    surname: 'Lannister',
+    email: 'jaime@gmail.com',
+    password: 'jaimepass',
+    role: 'PETTAKER',
+    location:{
+      lat:39.568009,
+      long:2.6305170000000544
+    },
+    address: 'Beach City',
+    phoneNumber: '+34677798451',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    price: 15,
+    slogan: 'Master of fishes',
+    status: 'only weekend'
+  },
+  {
+    name: 'Tyrion',
+    surname: 'Lannister',
+    email: 'tyrion@gmail.com',
+    password: 'tyrionpass',
+    role: 'PETTAKER',
+    location:{
+      lat:41.4097037,
+      long:2.1892365999999583
+    },
+    address: 'Beach City',
+    phoneNumber: '+34677798451',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    price: 15,
+    slogan: 'Master of fishes',
+    status: 'only weekend'
+  },
 
 ];
 
