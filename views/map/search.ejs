@@ -1,5 +1,7 @@
 <h1>Here is the Map with all users around you!</h1>
 
+
+
 <div class="row">
   <div  style="background-color:lightgrey;" class="col-md-5">
     <h2> HERE WE PLACE THE MAP</h2>
@@ -28,7 +30,6 @@
             <div class="col-md-8">
               <h3><%= taker.name %><span style="float:right"><%= taker.price %>€ /hour</span></h3>
               <h4><%= taker.slogan %></h4>
-              <p><%= taker.address.zipCode %>, <%= taker.address.city %></p>
               <h5>Average of 4,5 in 26 evaluations</h5>
             </div>
 
@@ -53,7 +54,11 @@
   </div>
 </div>
 
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDimRakPJ6OfHh5LOOD0wxRxomF_ocMTk&libraries=places&callback=initAutocomplete"async defer></script>
+
 <script type="text/javascript" src="javascripts/map.js"></script>

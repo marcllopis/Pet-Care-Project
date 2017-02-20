@@ -14,150 +14,83 @@ const owner = new User({
   email: 'marcllopis89@gmail.com',
   password: 'marcpass',
   role: 'OWNER',
-  address: {
-    streetName: 'Mallorca',
-    number: '659',
-    zipCode: '08027',
-    city: 'Barcelona',
-    Country: 'Spain'
+  location:{
+    lat: 41.390205,
+    long: 2.154007
   },
-  phoneNumber: '+34677798451',
+  address: 'BCN',
 });
 
 const takers = [
   {
-    name: 'Guy',
-    surname: 'Guy2',
-    email: 'guy@gmail.com',
-    password: 'guypass',
+    name: 'Spiderman',
+    surname: 'Parker',
+    email: 'spiderman@gmail.com',
+    password: 'spiderpass',
     role: 'PETTAKER',
-    address: {
-      streetName: 'Mallorca',
-      number: '659',
-      zipCode: '08027',
-      city: 'Barcelona',
-      Country: 'Spain'
+    location:{
+      lat: 41.390205,
+      long: 2.154007
     },
+    address: 'New York City',
     phoneNumber: '+34677798451',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     price: 15,
     slogan: 'Master of dogs',
-    status: 'available'
+    status: 'all day'
   },
   {
-    name: 'Laura',
-    surname: 'BlaBla',
-    email: 'laura@gmail.com',
-    password: 'laurapass',
+    name: 'Batman',
+    surname: 'Wayne',
+    email: 'batman@gmail.com',
+    password: 'batpass',
     role: 'PETTAKER',
-    address: {
-      streetName: 'Bailen',
-      number: '659',
-      zipCode: '08027',
-      city: 'UK',
-      Country: 'Spain'
+    location:{
+      lat: 42.390205,
+      long: 2.354007
     },
-    phoneNumber: '+34677798451',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    price: 13,
-    slogan: 'Master of cats',
-    status: 'available'
-  },
-  {
-    name: 'Chris',
-    surname: 'Bryan',
-    email: 'chris@gmail.com',
-    password: 'chrispass',
-    role: 'PETTAKER',
-    address: {
-      streetName: 'Napols',
-      number: '17',
-      zipCode: '08027',
-      city: 'Madrid',
-      Country: 'Spain'
-    },
-    phoneNumber: '+34677798451',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    price: 15,
-    slogan: 'Pets love me',
-    status: 'available'
-  },
-  {
-    name: 'Andrew',
-    surname: 'Superlongsurname',
-    email: 'andrew@gmail.com',
-    password: 'andrewpass',
-    role: 'PETTAKER',
-    address: {
-      streetName: 'Gran via',
-      number: '659',
-      zipCode: '08027',
-      city: 'Hospitalet',
-      Country: 'Spain'
-    },
-    phoneNumber: '+34677798451',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    price: 15,
-    slogan: 'Super long slogan to check what happens',
-    status: 'only morning time'
-  },
-  {
-    name: 'Britney',
-    surname: 'Whatever',
-    email: 'britney@gmail.com',
-    password: 'britneypass',
-    role: 'PETTAKER',
-    address: {
-      streetName: 'Arago',
-      number: '659',
-      zipCode: '08027',
-      city: 'Barcelona',
-      Country: 'Spain'
-    },
-    phoneNumber: '+34677798451',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    price: 15,
-    slogan: 'I love to take care of your pet',
-    status: 'night time'
-  },
-  {
-    name: 'Vincent',
-    surname: 'Blabla',
-    email: 'vincent@gmail.com',
-    password: 'vincentpass',
-    role: 'PETTAKER',
-    address: {
-      streetName: 'Streeeeet',
-      number: '659',
-      zipCode: '08027',
-      city: 'Barcelona',
-      Country: 'Spain'
-    },
+    address: 'Barcelona',
     phoneNumber: '+34677798451',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     price: 15,
     slogan: 'Master of puppies',
-    status: 'only weekends'
+    status: 'all day'
   },
   {
-    name: 'Spiderman',
+    name: 'Superman',
     surname: 'Parker',
-    email: 'spiderman@gmail.com',
-    password: 'spidermanpass',
+    email: 'superman@gmail.com',
+    password: 'superpass',
     role: 'PETTAKER',
-    address: {
-      streetName: 'NewYork',
-      number: '659',
-      zipCode: '08027',
-      city: 'NewYork',
-      Country: 'USA'
+    location:{
+      lat: 41.890205,
+      long: 2.254007
     },
+    address: 'Hospitalet City',
     phoneNumber: '+34677798451',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     price: 15,
-    slogan: 'Master of spiders',
-    status: 'all day long'
+    slogan: 'Love your pets',
+    status: 'only weekends'
   },
+  {
+    name: 'Aquaman',
+    surname: 'Fishy',
+    email: 'aquaman@gmail.com',
+    password: 'aquapass',
+    role: 'PETTAKER',
+    location:{
+      lat:41.990205,
+      long: 2.154007
+    },
+    address: 'Beach City',
+    phoneNumber: '+34677798451',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    price: 15,
+    slogan: 'Master of fishes',
+    status: 'only weekend'
+  },
+
 ];
 
 
