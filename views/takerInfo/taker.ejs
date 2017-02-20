@@ -1,0 +1,89 @@
+
+<div class="container takers-container-custom">
+  <div class="takers-header-bg">
+    <div class="container takers-header">
+      <div class="row "><br>
+          <div class="col-md-4">
+            <img src="https://s-media-cache-ak0.pinimg.com/564x/dd/49/dd/dd49dd83e894321a9402465c98ebc386.jpg" class ="img-responsive img-thumbnail img-custom" alt="">
+          </div>
+          <div class="col-md-8">
+            <h3><%= takers.name %><span style="float:right"><%= takers.price %>€ /hour</span></h3>
+            <h4><%= takers.slogan %></h4>
+            <p><%= takers.address.zipCode %>, <%= takers.address.city %></p>
+            <h5>Average of 4,5 in 26 evaluations</h5>
+            <h4>Availability: <%= takers.status %></h4>
+
+          </div>
+      </div>
+    </div>
+    <br>
+  </div>
+<hr>
+<br>
+  <div class="row">
+    <div class="col-md-8">
+      <img src="http://slodive.com/wp-content/uploads/2012/11/funny-pug-pictures/makingface.jpg" class ="img-responsive img-pet-taker-custom" alt="">
+    <div class="about">
+      <h3>About <%= takers.name %>: </h3>
+      <p class="text-justify"><%= takers.description%></p>
+      <h3>Personal information: </h3>
+      <p>Address: <%= takers.address.streetName%>, <%= takers.address.number%>, <%= takers.address.zipCode%><br><%= takers.address.city%> <%= takers.address.Country%></p>
+      <p>Phone number: <%= takers.phoneNumber%></p>
+      <p>Email: <%= takers.email%></p>
+    </div>
+    <hr>
+    <div class="reviews">
+      <h3>3 Reviews:</h3>
+      <div class="row">
+        <div class="col-md-2">
+          <img src="https://s-media-cache-ak0.pinimg.com/564x/dd/49/dd/dd49dd83e894321a9402465c98ebc386.jpg" class ="img-responsive img-thumbnail img-reviewer-custom" alt="">
+          <h5>Alexandre</h5>
+        </div>
+        <div class="col-md-10">
+          <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, nostrum. Ducimus nulla reprehenderit ipsam fugiat tempora dolorum eaque. Dolorum voluptatum, doloribus amet eligendi animi optio distinctio. Commodi consequatur voluptatibus, dolores.</p>
+          <h5>on 01/01/2017</h5>
+          <h5>Alex give her 5 stars</h5>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-2">
+          <img src="https://s-media-cache-ak0.pinimg.com/564x/dd/49/dd/dd49dd83e894321a9402465c98ebc386.jpg" class ="img-responsive img-thumbnail img-reviewer-custom" alt="">
+          <h5>Alexandre</h5>
+        </div>
+        <div class="col-md-10">
+          <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, nostrum. Ducimus nulla reprehenderit ipsam fugiat tempora dolorum eaque. Dolorum voluptatum, doloribus amet eligendi animi optio distinctio. Commodi consequatur voluptatibus, dolores.</p>
+          <h5>on 01/01/2017</h5>
+          <h5>Alex give her 5 stars</h5>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-2">
+          <img src="https://s-media-cache-ak0.pinimg.com/564x/dd/49/dd/dd49dd83e894321a9402465c98ebc386.jpg" class ="img-responsive img-thumbnail img-reviewer-custom" alt="">
+          <h5>Alexandre</h5>
+        </div>
+        <div class="col-md-10">
+          <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, nostrum. Ducimus nulla reprehenderit ipsam fugiat tempora dolorum eaque. Dolorum voluptatum, doloribus amet eligendi animi optio distinctio. Commodi consequatur voluptatibus, dolores.</p>
+          <h5>on 01/01/2017</h5>
+          <h5>Alex give her 5 stars</h5>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div class="col-md-4 form-group book-taker-box">
+      <h3 class="text-center">Book <%= takers.name %> now</h3><br>
+      <h4>Dates:</h4>
+      from <input type="date" name="date-from" value=""> <br><br>to <input type="date" name="date-to" value="">
+      <br><br>
+      <h4>Hours per day:</h4>
+      <input type="number" name="date-from" value=""><br><br><br>
+      <h2 class=text-center><button class="btn btn-success">BOOK NOW</button><h2>
+    </div>
+  </div>
+
+</div>
+
+
+<a href="/search">&lArr; Go back to the map view</a>
