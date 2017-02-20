@@ -7,12 +7,10 @@ const userSchema = new Schema({
   	email: String,
     password: String,
     profilePicture: String, //Need to check how to do it
-    address: {
-      streetName: String,
-      number: String,
-      zipCode: String,
-      city: String,
-      Country: String
+    address: String,
+    location:{
+      lat: String,
+      long: String
     },
     phoneNumber: String,
     role: {

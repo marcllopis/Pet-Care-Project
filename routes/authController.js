@@ -15,8 +15,13 @@ router.post("/signup", (req, res, next) => {
   var name     = req.body.name;
   var surname  = req.body.surname;
   var email    = req.body.email;
+  var address  = req.body.address;
+  var location = {
+    lat : req.body.places[0].geometry.location.lat(),
+    long: req.body.places[0].geometry.location.lng()
+  };
   var password = req.body.password;
-
+console.log(address);
   if (name === "" || surname === "" || email === "" || password === "" ) {
   	req.flash('error', 'Indicate name, surname, email and password' );
     res.render("auth/signup", { "message": req.flash("error") });
@@ -37,6 +42,8 @@ router.post("/signup", (req, res, next) => {
       name,
       surname,
       email,
+      address,
+      location,
       password: hashPass
     });
 
