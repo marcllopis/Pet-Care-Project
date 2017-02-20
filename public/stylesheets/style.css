@@ -34,6 +34,7 @@ button a {
 	margin: 0 auto;
 }
 
+<<<<<<< HEAD
 /*/////////////////////////////////////////////////////////*/
 /*Styles needed for displaying users list and user info*/
 /*/////////////////////////////////////////////////////////*/
@@ -84,3 +85,18 @@ button a {
 }
 /*/////////////////////////////////////////////////////////*/
 /*/////////////////////////////////////////////////////////*/
+=======
+#floating-panel {
+      position: absolute;
+      top: 10px;
+      left: 25%;
+      z-index: 5;
+      background-color: #fff;
+      padding: 5px;
+      border: 1px solid #999;
+      text-align: center;
+      font-family: 'Roboto','sans-serif';
+      line-height: 30px;
+      padding-left: 10px;
+    }
+>>>>>>> 61699de36071c9241b23bebb8dc86225d062c58f
