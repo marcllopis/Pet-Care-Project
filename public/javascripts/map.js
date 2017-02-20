@@ -45,6 +45,18 @@ function initAutocomplete() {
           };
 
 
+          myPlaces.forEach(function(place){
+              let title = place.name;
+              let position = {
+                lat: place.location.coordinates[1],
+                lng: place.location.coordinates[0]
+              };
+
+              var pin = new google.maps.Marker({ position, map, title  });
+              if(place.name === "Coffee") {pin.setIcon('https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png')}
+              else if (place.name === "books") {markers.push(pin)}
+            });
+
           if (place.geometry.viewport) {
             // Only geocodes have viewport.
             bounds.union(place.geometry.viewport);
