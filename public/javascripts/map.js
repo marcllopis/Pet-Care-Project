@@ -14,6 +14,12 @@ function initAutocomplete() {
 
 
       // Bias the SearchBox results towards current map's viewport.
+
+
+$('#pac-input').change(function() {
+  window.location.href = "http://localhost:3000/search?lat=" + map.center.lat() + "&long=" + map.center.lng();
+
+});
       map.addListener('bounds_changed', function() {
         searchBox.setBounds(map.getBounds());
       });
@@ -25,6 +31,12 @@ function initAutocomplete() {
 
       })
 
+
+      map.addListener('dragend', function() {
+        console.log("test");
+      window.location.href = "http://localhost:3000/search?lat=" + map.center.lat() + "&long=" + map.center.lng();
+
+      })
 
       let markers = [];
 
@@ -65,16 +77,6 @@ function initAutocomplete() {
           return;
         }
 
-
-
-        // For each place, get the icon, name and location.
-        var bounds = new google.maps.LatLngBounds();
-        places.forEach(function(place) {
-          if (!place.geometry) {
-            console.log("Returned place contains no geometry");
-            return;
-          }
-        
 
           if (place.geometry.viewport) {
             // Only geocodes have viewport.
