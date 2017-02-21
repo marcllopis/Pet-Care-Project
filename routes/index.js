@@ -15,15 +15,15 @@ router.get('/profile', auth.checkLoggedIn('You must be login', '/login'), functi
 });
 
 router.get('/profile', (req, res, next) => {
-  const userName = req.session.currentUser.name;
+  const users = req.session.currentUser.name;
   console.log("THIS IS THE USER LOGGED");
-  console.log(userName);
+  console.log(users);
   User.find({}, (err, users) => {
 
    if (err) { return next(err)}
 
     res.render('dashboard/profile', {
-     users : userName
+     users : users
 
    });
  });
@@ -32,17 +32,23 @@ router.get('/profile', (req, res, next) => {
 
 //route to show a list of users on the search page
 router.get('/search/:format?', (req, res, next) => {
+  console.log(req.params)
   User.find({},(err, takers) => {
 
     if (err) {
       return next(err);
     }
 
+    let location = {
+      lat: req.param('lat'),
+      lng: req.param('long')
+    };
+
+
     if(req.params.format === "json"){
       res.json((takers));
     } else {
-      console.log(takers);
-    res.render('map/search', {takers:takers});
+    res.render('map/search', {takers:takers, location: location});
     }
   });
 });
@@ -53,9 +59,7 @@ router.get('/users/:takerId', auth.checkLoggedIn('You must be login', '/login'),
   let takerId = req.params.takerId;
   User.findById(takerId, (err, takers) => {
     if (err) {  next(err); }
-    console.log("here is the takers info");
-    console.log(takers);
-    console.log("-------------------------");
+
     res.render('takerInfo/taker', { takers: takers });
   });
 });

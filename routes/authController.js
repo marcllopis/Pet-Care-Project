@@ -25,8 +25,7 @@ router.post("/signup", (req, res, next) => {
     long: req.body.long
   };
   var password = req.body.password;
-console.log(address);
-console.log(location);
+
   if (name === "" || surname === "" || email === "" || password === "" ) {
   	req.flash('error', 'Indicate name, surname, email and password' );
     res.render("auth/signup", { "message": req.flash("error") });
