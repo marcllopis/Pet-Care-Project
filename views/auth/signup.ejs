@@ -27,7 +27,16 @@
           <label for="longInput">long</label>
           <input id="long" type="text" class="form-control" placeholder="Full address" name="long">
         </div>
-
+        <div class="form-group">
+        <label for="rolInput">Please select your role</label>
+        <!-- <input  list="roles"> -->
+        <select class="form-control" name="role" id="roles">
+          <option value="OWNER">You are owner of some pets </option>
+          <option value="PETTAKER">You will take care of pets </option>
+          <option value="BOTH">You have a pet but you want to take care of other pets aswell </option>
+          </select>
+           <!-- id="role" type="text" class="form-control" placeholder="Rol" name="rol"> -->
+        </div>
         <div class="form-group">
           <label for="passwordInput">Password</label>
           <input type="password" class="form-control" id="password" placeholder="Password" name="password">
