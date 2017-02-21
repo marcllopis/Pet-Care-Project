@@ -2,16 +2,17 @@
 function initAutocomplete() {
       var map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: Number(loc.lat), lng: Number(loc.lng)},
-        zoom: 12,
+        zoom: 10,
         mapTypeId: 'roadmap'
 
       });
 
-
       // Create the search box and link it to the UI element.
       var input = document.getElementById('pac-input');
       var searchBox = new google.maps.places.SearchBox(input);
-
+        // console.log(input);
+      // console.log(searchBox);
+      // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
       // Bias the SearchBox results towards current map's viewport.
 
@@ -23,14 +24,7 @@ $('#pac-input').change(function() {
       map.addListener('bounds_changed', function() {
         searchBox.setBounds(map.getBounds());
       });
-
-
-      map.addListener('dragend', function() {
-
-      window.location.href = "http://localhost:3000/search?lat=" + map.center.lat() + "&long=" + map.center.lng();
-
-      })
-
+      // console.log(myTakers);
 
       map.addListener('dragend', function() {
         console.log("test");
@@ -78,6 +72,17 @@ $('#pac-input').change(function() {
         }
 
 
+
+
+        // For each place, get the icon, name and location.
+        var bounds = new google.maps.LatLngBounds();
+        places.forEach(function(place) {
+          if (!place.geometry) {
+            console.log("Returned place contains no geometry");
+            return;
+          }
+
+
           if (place.geometry.viewport) {
             // Only geocodes have viewport.
             bounds.union(place.geometry.viewport);
@@ -88,52 +93,3 @@ $('#pac-input').change(function() {
         map.fitBounds(bounds);
       });
     }
-
-
-
-
-    function init() {
-
-    var input = document.getElementById('pac-input');
-    var autocomplete = new google.maps.places.Autocomplete(input);
-
-    }
-
-
-
-    $('#pac-input').change(function() {
-
-      var service = new google.maps.places.PlacesService(document.createElement("div"));
-
-      var request = {
-        location: {lat: 0, lng: 0},
-        radius: "500",
-        query: $("#pac-input").val()
-      };
-
-      service.textSearch(request, function(places){
-        const lat = places[0].geometry.location.lat();
-        const long = places[0].geometry.location.lng();
-
-        $("#lat").val(lat);
-        $("#long").val(long);
-
-
-
-      });
-    });
-
-
-
-    $("#goMap").click(function(){
-      if ($("#lat").val() !== "" && $("#long").val() !== "") {
-        $(this).find("a").attr("href", "/search?lat=" + $("#lat").val() + "&long=" + $("#long").val())
-      }
-    })
-
-
-
-
-    $(document).ready(function(){
-      init();
-    })
