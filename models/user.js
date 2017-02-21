@@ -8,10 +8,7 @@ const userSchema = new Schema({
     password: String,
     profilePicture: String, //Need to check how to do it
     address: String,
-    location:{
-      lat: Number,
-      long: Number
-    },
+    location: { type: { type: String }, coordinates: [Number] },
     phoneNumber: String,
     role: {
        type: String,
@@ -31,6 +28,8 @@ const userSchema = new Schema({
   	timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
 	}
 );
+
+userSchema.index({ location: '2dsphere' });
 
 const User = mongoose.model("User", userSchema);
 

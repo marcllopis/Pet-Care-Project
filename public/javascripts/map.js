@@ -38,8 +38,8 @@ console.log(loc.lat);
             if (response.role === "PETTAKER") {
               let title = response.name
               let position = {
-                lat: response.location.lat,
-                lng: response.location.long
+                lat: response.location.coordinates[0],
+                lng: response.location.coordinates[1]
               };
               var pin = new google.maps.Marker({ position, map, title  });
               markers.push(pin)

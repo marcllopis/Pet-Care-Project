@@ -15,8 +15,8 @@ const owner = new User({
   password: 'marcpass',
   role: 'OWNER',
   location:{
-    lat: 41.390205,
-    long: 2.154007
+    type:'Point',
+    coordinates: [41.390205, 2.154007]
   },
   address: 'BCN',
 });
@@ -29,8 +29,8 @@ const takers = [
     password: 'spiderpass',
     role: 'PETTAKER',
     location:{
-      lat: 41.390205,
-      long: 2.154007
+      type:'Point',
+      coordinates: [41.390205, 2.154007]
     },
     address: 'New York City',
     phoneNumber: '+34677798451',
@@ -46,8 +46,8 @@ const takers = [
     password: 'batpass',
     role: 'PETTAKER',
     location:{
-      lat: 42.390205,
-      long: 2.354007
+      type:'Point',
+      coordinates: [42.390205, 2.354007]
     },
     address: 'Barcelona',
     phoneNumber: '+34677798451',
@@ -63,8 +63,8 @@ const takers = [
     password: 'superpass',
     role: 'PETTAKER',
     location:{
-      lat: 41.890205,
-      long: 2.254007
+      type:'Point',
+      coordinates: [41.890205, 2.254007]
     },
     address: 'Hospitalet City',
     phoneNumber: '+34677798451',
@@ -80,8 +80,8 @@ const takers = [
     password: 'aquapass',
     role: 'PETTAKER',
     location:{
-      lat:41.990205,
-      long: 2.154007
+      type:'Point',
+      coordinates: [41.990205, 2.154007]
     },
     address: 'Beach City',
     phoneNumber: '+34677798451',
@@ -97,8 +97,8 @@ const takers = [
     password: 'ironpass',
     role: 'PETTAKER',
     location:{
-      lat: 41.3843889,
-      long: 2.169593099999929
+      type:'Point',
+      coordinates: [41.3843889, 2.169593099999929]
     },
     address: 'Code City',
     phoneNumber: '+34677798451',
@@ -114,8 +114,8 @@ const takers = [
     password: 'aquapass',
     role: 'PETTAKER',
     location:{
-      lat:41.405859,
-      long: -8.523700100000042
+      type:'Point',
+      coordinates: [41.405859, -8.523700100000042]
     },
     address: 'Beach City',
     phoneNumber: '+34677798451',
@@ -131,8 +131,8 @@ const takers = [
     password: 'lukepass',
     role: 'PETTAKER',
     location:{
-      lat:41.39580509999999,
-      long:2.1918571999999585
+      type:'Point',
+      coordinates: [41.39580509999999, 2.1918571999999585]
     },
     address: 'Beach City',
     phoneNumber: '+34677798451',
@@ -148,8 +148,8 @@ const takers = [
     password: 'jarpass',
     role: 'PETTAKER',
     location:{
-      lat:41.3969391,
-      long:2.189640700000041
+      type:'Point',
+      coordinates: [41.3969391, 2.189640700000041]
     },
     address: 'Beach City',
     phoneNumber: '+34677798451',
@@ -165,8 +165,8 @@ const takers = [
     password: 'frodopass',
     role: 'PETTAKER',
     location:{
-      lat:41.40503289999999,
-      long:2.19103419999999
+      type:'Point',
+      coordinates: [41.40503289999999, 2.19103419999999]
     },
     address: 'Beach City',
     phoneNumber: '+34677798451',
@@ -182,8 +182,8 @@ const takers = [
     password: 'gollumpass',
     role: 'PETTAKER',
     location:{
-      lat:40.4137818,
-      long:-3.6921270999999933
+      type:'Point',
+      coordinates: [40.4137818, -3.6921270999999933]
     },
     address: 'Beach City',
     phoneNumber: '+34677798451',
@@ -199,8 +199,8 @@ const takers = [
     password: 'gandalfpass',
     role: 'PETTAKER',
     location:{
-      lat:41.39581630000001,
-      long:2.1887362999999596
+      type:'Point',
+      coordinates: [41.39581630000001, 2.1887362999999596]
     },
     address: 'Beach City',
     phoneNumber: '+34677798451',
@@ -216,8 +216,8 @@ const takers = [
     password: 'ironpass',
     role: 'PETTAKER',
     location:{
-      lat:41.4080056,
-      long:2.1902811999999585
+      type:'Point',
+      coordinates: [41.4080056, 2.1902811999999585]
     },
     address: 'Beach City',
     phoneNumber: '+34677798451',
@@ -233,8 +233,8 @@ const takers = [
     password: 'jaimepass',
     role: 'PETTAKER',
     location:{
-      lat:39.568009,
-      long:2.6305170000000544
+      type:'Point',
+      coordinates: [39.568009, 2.6305170000000544]
     },
     address: 'Beach City',
     phoneNumber: '+34677798451',
@@ -250,8 +250,8 @@ const takers = [
     password: 'tyrionpass',
     role: 'PETTAKER',
     location:{
-      lat:41.4097037,
-      long:2.1892365999999583
+      type:'Point',
+      coordinates: [41.4097037, 2.1892365999999583]
     },
     address: 'Beach City',
     phoneNumber: '+34677798451',
