@@ -11,7 +11,6 @@ $('#searchTextField').change(function() {
 
   var service = new google.maps.places.PlacesService(document.createElement("div"));
 
-
   var request = {
     location: {lat: 0, lng: 0},
     radius: "500",

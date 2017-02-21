@@ -24,7 +24,7 @@ router.post("/signup", (req, res, next) => {
 
   var location = {
     type: 'Point',
-    coordinates: [req.body.lat, req.body.long]
+    coordinates: [req.body.long, req.body.lat]
   };
 
   // var location = {

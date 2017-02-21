@@ -33,11 +33,17 @@ router.get('/profile', (req, res, next) => {
 //route to show a list of users on the search page
 router.get('/search/:format?', (req, res, next) => {
   console.log(req.params)
-  User.find({},(err, takers) => {
+
+  User.where('location')
+   .near({ center: { coordinates: [2.1207637999999633, 41.3802722], type: 'Point' }, maxDistance: 2000 })
+   .find((err, takers) => {
+
 
     if (err) {
       return next(err);
     }
+
+
 
     let location = {
       lat: req.param('lat'),
@@ -71,12 +77,12 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-
-router.get('/search', function(req, res, next) {
-  res.render('map/search', { title: 'Express' });
-});
-
-
+//
+// router.get('/search', function(req, res, next) {
+//   res.render('map/search', { title: 'Express' });
+// });
+//
+//
 
 
 
