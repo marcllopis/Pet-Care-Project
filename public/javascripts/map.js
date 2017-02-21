@@ -84,9 +84,16 @@ console.log(loc.lat);
         })
 
 
-map.addListener('dragend', function() { console.log(map.center.lat(),map.center.lng())
-$('#lat2').val(map.center.lat());
-$('#lng2').val(map.center.lng());
+map.addListener('dragend', function() {
+  console.log(map.center.lat(),map.center.lng())
+
+
+// "/search?lat=" + $("#lat").val() + "&long=" + $("#long").val())
+window.location.href = "http://localhost:3000/search?lat=" + map.center.lat() + "&long=" + map.center.lng();
+
+
+// $('#lat2').val(map.center.lat());
+// $('#lng2').val(map.center.lng());
 })
 
         // For each place, get the icon, name and location.
