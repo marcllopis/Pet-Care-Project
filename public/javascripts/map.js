@@ -2,12 +2,12 @@
 function initAutocomplete() {
       var map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: Number(loc.lat), lng: Number(loc.lng)},
-        zoom: 15,
+        zoom: 12,
         mapTypeId: 'roadmap'
 
       });
 
-      
+
       // Create the search box and link it to the UI element.
       var input = document.getElementById('pac-input');
       var searchBox = new google.maps.places.SearchBox(input);
@@ -18,27 +18,39 @@ function initAutocomplete() {
         searchBox.setBounds(map.getBounds());
       });
 
+
+      map.addListener('dragend', function() {
+
+      window.location.href = "http://localhost:3000/search?lat=" + map.center.lat() + "&long=" + map.center.lng();
+
+      })
+
+
       let markers = [];
+
+
+      let array = window.location.href.split("/")[3].split("=")
+      let location = {
+        lat: array[1].split("&")[0],
+        lng: array[2]
+      }
 
       $.ajax({
         url: "http://localhost:3000/search/json",
+        data: location,
         type: "get",
         success: function(response){
-          console.log(response);
-
           response.forEach(function(response){
             if (response.role === "PETTAKER") {
               let title = response.name
               let position = {
-                lat: response.location.coordinates[1],
-                lng: response.location.coordinates[0]
+                lat: response.location.coordinates[0],
+                lng: response.location.coordinates[1]
               };
               var pin = new google.maps.Marker({ position, map, title  });
               markers.push(pin)
             }
           });
-
-          console.log(response)
         },
         error: function(error){console.log(error)}
       })
@@ -49,19 +61,11 @@ function initAutocomplete() {
       // more details for that place.
       searchBox.addListener('places_changed', function() {
         var places = searchBox.getPlaces();
-        console.log(places[0].geometry.location.lat())
-        console.log(places[0].geometry.location.lng())
         if (places.length == 0) {
           return;
         }
 
 
-
-        map.addListener('dragend', function() {
-
-          window.location.href = "http://localhost:3000/search?lat=" + map.center.lat() + "&long=" + map.center.lng();
-
-        })
 
         // For each place, get the icon, name and location.
         var bounds = new google.maps.LatLngBounds();
@@ -70,14 +74,7 @@ function initAutocomplete() {
             console.log("Returned place contains no geometry");
             return;
           }
-          var icon = {
-            url: place.icon,
-            size: new google.maps.Size(71, 71),
-            origin: new google.maps.Point(0, 0),
-            anchor: new google.maps.Point(17, 34),
-            scaledSize: new google.maps.Size(25, 25)
-          };
-
+        
 
           if (place.geometry.viewport) {
             // Only geocodes have viewport.
@@ -89,3 +86,52 @@ function initAutocomplete() {
         map.fitBounds(bounds);
       });
     }
+
+
+
+
+    function init() {
+
+    var input = document.getElementById('pac-input');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+
+    }
+
+
+
+    $('#pac-input').change(function() {
+
+      var service = new google.maps.places.PlacesService(document.createElement("div"));
+
+      var request = {
+        location: {lat: 0, lng: 0},
+        radius: "500",
+        query: $("#pac-input").val()
+      };
+
+      service.textSearch(request, function(places){
+        const lat = places[0].geometry.location.lat();
+        const long = places[0].geometry.location.lng();
+
+        $("#lat").val(lat);
+        $("#long").val(long);
+
+
+
+      });
+    });
+
+
+
+    $("#goMap").click(function(){
+      if ($("#lat").val() !== "" && $("#long").val() !== "") {
+        $(this).find("a").attr("href", "/search?lat=" + $("#lat").val() + "&long=" + $("#long").val())
+      }
+    })
+
+
+
+
+    $(document).ready(function(){
+      init();
+    })
