@@ -20,6 +20,8 @@ router.post("/signup", (req, res, next) => {
   var surname  = req.body.surname;
   var email    = req.body.email;
   var address  = req.body.address;
+  var role     = req.body.role;
+
 
   var location = {
     lat : req.body.lat,
@@ -27,10 +29,8 @@ router.post("/signup", (req, res, next) => {
   };
 
   var password = req.body.password;
-console.log(address);
-console.log(location);
 
-  if (name === "" || surname === "" || email === "" || password === "" ) {
+  if (name === "" || surname === "" || email === "" || password === "" || role === "" ) {
   	req.flash('error', 'Indicate name, surname, email and password' );
     res.render("auth/signup", { "message": req.flash("error") });
     return;
@@ -51,6 +51,7 @@ console.log(location);
       surname,
       email,
       address,
+      role,
       password: hashPass
     });
 
@@ -60,7 +61,7 @@ console.log(location);
         res.render("auth/signup", { message: req.flash('error') });
       } else {
         passport.authenticate("local")(req, res, function () {
-           res.redirect('/secret');
+           res.redirect('/login');
         });
       }
     });
@@ -74,7 +75,7 @@ router.get("/login", (req, res, next) => {
 });
 
 router.post("/login", passport.authenticate("local", {
-  successRedirect: "/secret",
+  successRedirect: "/",
   failureRedirect: "/login",
   failureFlash: true,
   passReqToCallback: true

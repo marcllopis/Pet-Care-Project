@@ -23,6 +23,8 @@ router.get('/search/:format?', (req, res, next) => {
 
 
 
+
+
 router.get('/users/:takerId', auth.checkLoggedIn('You must be login', '/login'), (req, res, next) => {
   let takerId = req.params.takerId;
   User.findById(takerId, (err, takers) => {
