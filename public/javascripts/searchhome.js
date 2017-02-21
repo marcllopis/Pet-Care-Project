@@ -19,10 +19,6 @@ $('#searchTextField').change(function() {
   };
 
   service.textSearch(request, function(places){
-    console.log(places[0]);
-    console.log(places[0].geometry.location.lat())
-    console.log(places[0].geometry.location.lng())
-
     const lat = places[0].geometry.location.lat();
     const long = places[0].geometry.location.lng();
 
@@ -37,22 +33,11 @@ $('#searchTextField').change(function() {
   });
 });
 
-
-
-
-
-console.log("OUTSIDE");
-console.log(lati);
-console.log(longi);
-
 $("#goMap").click(function(){
   if ($("#lat").val() !== "" && $("#long").val() !== "") {
     $(this).find("a").attr("href", "/search?lat=" + $("#lat").val() + "&long=" + $("#long").val())
   }
 })
-
-
-
 
 $(document).ready(function(){
   init();

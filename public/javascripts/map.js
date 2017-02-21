@@ -15,10 +15,22 @@ function initAutocomplete() {
       // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
       // Bias the SearchBox results towards current map's viewport.
+
+
+$('#pac-input').change(function() {
+  window.location.href = "http://localhost:3000/search?lat=" + map.center.lat() + "&long=" + map.center.lng();
+
+});
       map.addListener('bounds_changed', function() {
         searchBox.setBounds(map.getBounds());
       });
       // console.log(myTakers);
+
+      map.addListener('dragend', function() {
+        console.log("test");
+      window.location.href = "http://localhost:3000/search?lat=" + map.center.lat() + "&long=" + map.center.lng();
+
+      })
 
       let markers = [];
 
@@ -60,11 +72,7 @@ function initAutocomplete() {
         }
 
 
-map.addListener('dragend', function() {
-initAutocomplete()
-window.location.href = "http://localhost:3000/search?lat=" + map.center.lat() + "&long=" + map.center.lng();
 
-})
 
         // For each place, get the icon, name and location.
         var bounds = new google.maps.LatLngBounds();
@@ -73,13 +81,7 @@ window.location.href = "http://localhost:3000/search?lat=" + map.center.lat() + 
             console.log("Returned place contains no geometry");
             return;
           }
-          var icon = {
-            url: place.icon,
-            size: new google.maps.Size(71, 71),
-            origin: new google.maps.Point(0, 0),
-            anchor: new google.maps.Point(17, 34),
-            scaledSize: new google.maps.Size(25, 25)
-          };
+
 
           if (place.geometry.viewport) {
             // Only geocodes have viewport.
