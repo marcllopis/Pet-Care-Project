@@ -4,6 +4,32 @@ var router = express.Router();
 var auth = require('../helpers/auth');
 const User           = require("../models/user");
 
+
+
+router.get('/users/book', auth.checkLoggedIn('You must be login', '/login'), function(req, res, next) {
+  res.render('booking/booktaker');
+});
+
+router.get('/profile', auth.checkLoggedIn('You must be login', '/login'), function(req, res, next) {
+  res.render('dashboard/profile');
+});
+
+router.get('/profile', (req, res, next) => {
+  const userName = req.session.currentUser.name;
+  console.log("THIS IS THE USER LOGGED");
+  console.log(userName);
+  User.find({}, (err, users) => {
+
+   if (err) { return next(err)}
+
+    res.render('dashboard/profile', {
+     users : userName
+
+   });
+ });
+});
+
+
 //route to show a list of users on the search page
 router.get('/search/:format?', (req, res, next) => {
   User.find({},(err, takers) => {
@@ -43,8 +69,6 @@ router.get('/', function(req, res, next) {
 router.get('/search', function(req, res, next) {
   res.render('map/search', { title: 'Express' });
 });
-
-
 
 
 

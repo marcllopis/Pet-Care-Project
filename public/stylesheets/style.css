@@ -91,6 +91,22 @@ button a {
 }
 
 
+.dashboard-custom-box{
+  -webkit-box-shadow: 11px 14px 38px -21px rgba(0,0,0,0.58);
+  -moz-box-shadow: 11px 14px 38px -21px rgba(0,0,0,0.58);
+  box-shadow: 11px 14px 38px -21px rgba(0,0,0,0.58);
+  border-radius: 10px;
+  border: 1px solid grey;
+  padding: 20px;
+  width: 70%;
+  margin-top: 30px;
+}
+
+.form-edit-custom{
+  width: 50%;
+  margin: 0 auto;
+}
+
 /*/////////////////////////////////////////////////////////*/
 /*/////////////////////////////////////////////////////////*/
 #floating-panel {
