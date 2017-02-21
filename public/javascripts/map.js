@@ -1,5 +1,7 @@
 
 function initAutocomplete() {
+var infowindow = new google.maps.InfoWindow();
+
       var map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: Number(loc.lat), lng: Number(loc.lng)},
         zoom: 10,
@@ -17,10 +19,10 @@ function initAutocomplete() {
       // Bias the SearchBox results towards current map's viewport.
 
 
-$('#pac-input').change(function() {
-  window.location.href = "http://localhost:3000/search?lat=" + map.center.lat() + "&long=" + map.center.lng();
-
-});
+// $('#pac-input').change(function() {
+//   window.location.href = "http://localhost:3000/search?lat=" + map.center.lat() + "&long=" + map.center.lng();
+//
+// });
       map.addListener('bounds_changed', function() {
         searchBox.setBounds(map.getBounds());
       });
@@ -54,7 +56,29 @@ $('#pac-input').change(function() {
                 lng: response.location.coordinates[1]
               };
               var pin = new google.maps.Marker({ position, map, title  });
-              markers.push(pin)
+              var contentString = response.name + '\n'  + '$' + response.price + '\n' + response.slogan ;
+      
+
+              google.maps.event.addListener(pin, 'click', function() {
+              infowindow.setContent(contentString + '<br>' + '<button><a href="/users/\'' + response._id + '\'">Contact this pet caretaker</a></button>');
+                            infowindow.open(map, this);
+                });
+
+                                                              // <a href="/search">Check the map!</a>
+            // }
+                      // var infowindow = new google.maps.InfoWindow({
+                      //   content: contentString
+                      // });
+                      //
+                      // pin.addListener('click', function() {
+                      //   infowindow.open(map, pin);
+                      // });
+                      //
+                      // infowindow.addListener('click', function(){
+                      //       window.location.href = "http://localhost:3000/users/" + response._id;
+                      // })
+
+
             }
           });
         },
