@@ -32,29 +32,32 @@ router.get('/profile', (req, res, next) => {
 
 //route to show a list of users on the search page
 router.get('/search/:format?', (req, res, next) => {
-  console.log(req.params)
-  User.find({},(err, takers) => {
 
+function locateUsers(location, resCallback){
+  User.where('location')
+    .near({ center: { coordinates: [location.lat, location.lng], type: 'Point' }, maxDistance: 50000 })
+    .find((err, takers) => {
     if (err) {
       return next(err);
     }
-
-    let location = {
-      lat: req.param('lat'),
-      lng: req.param('long')
-    };
-
+    resCallback(takers)
+  });
+}
 
     if(req.params.format === "json"){
-      res.json((takers));
+      //send params through ajax call
+      let location = req.query
+      locateUsers(location, function(takers){res.json(takers)});
     } else {
-    res.render('map/search', {takers:takers, location: location});
+        let location = {
+          lat: req.param('lat'),
+          lng: req.param('long')
+        };
+        locateUsers(location, function(takers){res.render('map/search', {takers:takers, location: location});})
     }
-  });
+
+
 });
-
-
-
 
 
 router.get('/users/:takerId', auth.checkLoggedIn('You must be login', '/login'), (req, res, next) => {

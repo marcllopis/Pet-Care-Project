@@ -6,12 +6,6 @@ function initAutocomplete() {
         mapTypeId: 'roadmap'
 
       });
-console.log("COORDINATES");
-console.log(loc.lat);
-      console.log(loc.lng);
-
-
-
 
       // Create the search box and link it to the UI element.
       var input = document.getElementById('pac-input');
@@ -28,12 +22,18 @@ console.log(loc.lat);
 
       let markers = [];
 
+
+      let array = window.location.href.split("/")[3].split("=")
+      let location = {
+        lat: array[1].split("&")[0],
+        lng: array[2]
+      }
+
       $.ajax({
         url: "http://localhost:3000/search/json",
+        data: location,
         type: "get",
         success: function(response){
-          console.log(response);
-
           response.forEach(function(response){
             if (response.role === "PETTAKER") {
               let title = response.name
@@ -45,8 +45,6 @@ console.log(loc.lat);
               markers.push(pin)
             }
           });
-
-          console.log(response)
         },
         error: function(error){console.log(error)}
       })
@@ -57,43 +55,15 @@ console.log(loc.lat);
       // more details for that place.
       searchBox.addListener('places_changed', function() {
         var places = searchBox.getPlaces();
-        console.log(places[0].geometry.location.lat())
-        console.log(places[0].geometry.location.lng())
         if (places.length == 0) {
           return;
         }
 
 
-        $.ajax({
-          url: "http://localhost:3000/search/json",
-          type: "get",
-          success: function(response){
-            response.forEach(function(response){
-              let title = response.name
-              let position = {
-                lat: response.location.lat,
-                lng: response.location.long
-              };
-              var pin = new google.maps.Marker({ position, map, title  });
-              markers.push(pin)
-
-            });
-
-          },
-          error: function(error){console.log(error)}
-        })
-
-
 map.addListener('dragend', function() {
-  console.log(map.center.lat(),map.center.lng())
-
-
-// "/search?lat=" + $("#lat").val() + "&long=" + $("#long").val())
+initAutocomplete()
 window.location.href = "http://localhost:3000/search?lat=" + map.center.lat() + "&long=" + map.center.lng();
 
-
-// $('#lat2').val(map.center.lat());
-// $('#lng2').val(map.center.lng());
 })
 
         // For each place, get the icon, name and location.
@@ -110,19 +80,6 @@ window.location.href = "http://localhost:3000/search?lat=" + map.center.lat() + 
             anchor: new google.maps.Point(17, 34),
             scaledSize: new google.maps.Size(25, 25)
           };
-
-
-          // myPlaces.forEach(function(place){
-          //     let title = place.name;
-          //     let position = {
-          //       lat: place.location.coordinates[1],
-          //       lng: place.location.coordinates[0]
-          //     };
-          //
-          //     var pin = new google.maps.Marker({ position, map, title  });
-          //     if(place.name === "Coffee") {pin.setIcon('https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png')}
-          //     else if (place.name === "books") {markers.push(pin)}
-          //   });
 
           if (place.geometry.viewport) {
             // Only geocodes have viewport.

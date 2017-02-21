@@ -12,6 +12,7 @@ const auth = require('./helpers/auth');
 const passport = require('passport');
 const flash = require("connect-flash");
 
+
 const mongoose = require("mongoose");
 mongoose.connect(`mongodb://localhost:${portDB}/${databaseName}`);
 
@@ -22,6 +23,7 @@ var authController = require('./routes/authController');
 var app = express();
 
 // view engine setup
+
 
 app.use(expressLayouts);
 app.set('layout', 'layouts/main');
@@ -37,8 +39,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-
 // session
 app.use(session({
   secret: "passport-local-strategy",
@@ -53,6 +53,7 @@ auth.passport(passport);
 
 app.use('/', authController);
 app.use('/', index);
+
 
 
 // catch 404 and forward to error handler
