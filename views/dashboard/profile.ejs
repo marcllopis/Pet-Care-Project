@@ -1,22 +1,26 @@
 <div class="container dashboard-custom-box">
   <div class="row">
-    <div class="col-md-12">
-      <h2>Hello <%=user.name%>!</h2>
+    <div class="col-md-9">
+      <%
+      if(users.role === "OWNER"){
+         %>
+      <h2>Hello <%=users.name%>!</h2>
 
       <div class="panel-body form-edit-custom">
+
         <form action="/signup" method="POST">
           <h4>Edit your profile:</h4>
           <div class="form-group">
             <label for="nameInput">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Name" name="name">
+            <input type="text" class="form-control" id="name" placeholder="<%=users.name%>" name="name">
           </div>
           <div class="form-group">
             <label for="surnameInput">Surname</label>
-            <input type="text" class="form-control" id="surname" placeholder="Surname" name="surname">
+            <input type="text" class="form-control" id="surname" placeholder="<%=users.surname%>" name="surname">
           </div>
           <div class="form-group">
             <label for="addressInput">Address</label>
-            <input id="searchTextField" type="text" class="form-control" placeholder="Full address" name="address">
+            <input id="searchTextField" type="text" class="form-control" placeholder="<%=users.address%>" name="address">
           </div>
           <div class="form-group">
             <label for="latInput">lat</label>
@@ -31,15 +35,15 @@
           <h4>Add some extra information:</h4>
           <div class="form-group">
             <label for="phoneInput">Phone number</label>
-            <input type="text" class="form-control" id="name" placeholder="Phone number" name="phoneNumber">
+            <input type="text" class="form-control" id="name" placeholder="<%=users.phone%>" name="phoneNumber">
           </div>
           <div class="form-group">
             <label for="pictureInput">Profile picture</label>
-            <input type="text" class="form-control" id="name" placeholder="Profile picture" name="picture">
+            <input type="text" class="form-control" id="name" placeholder="<%=users.profilePicture%>" name="picture">
           </div>
           <div class="form-group">
             <label for="surnameInput">About you</label>
-            <textarea class="form-control" id="surname" placeholder="About you" name="about"></textarea>
+            <textarea class="form-control" id="surname" placeholder="<%=users.description%>" name="about"></textarea>
           </div>
           <hr>
 
@@ -86,6 +90,84 @@
       </div>
       <hr>
       <h4>Check your reviews:</h4>
+
+      <%  } %>
+      <%
+      if(users.role === "PETTAKER"){
+         %>
+         <h2>Hello <%=users.name%>!</h2>
+
+
+         <div class="panel-body form-edit-custom">
+
+           <form action="/signup" method="POST">
+             <h4>Edit your profile:</h4>
+             <div class="form-group">
+               <label for="nameInput">Name</label>
+               <input type="text" class="form-control" id="name" placeholder="<%=users.name%>" name="name">
+             </div>
+             <div class="form-group">
+               <label for="surnameInput">Surname</label>
+               <input type="text" class="form-control" id="surname" placeholder="<%=users.surname%>" name="surname">
+             </div>
+             <div class="form-group">
+               <label for="addressInput">Address</label>
+               <input id="searchTextField" type="text" class="form-control" placeholder="<%=users.address%>" name="address">
+             </div>
+             <div class="form-group">
+               <label for="latInput">lat</label>
+               <input id="lat" type="text" class="form-control" placeholder="Full address" name="lat">
+             </div>
+             <div class="form-group">
+               <label for="longInput">long</label>
+               <input id="long" type="text" class="form-control" placeholder="Full address" name="long">
+             </div>
+             <hr>
+
+             <h4>Add some extra information:</h4>
+             <div class="form-group">
+               <label for="phoneInput">Phone number</label>
+               <input type="text" class="form-control" id="name" placeholder="<%=users.phone%>" name="phoneNumber">
+             </div>
+             <div class="form-group">
+               <label for="priceInput">Price per hour</label>
+               <input type="text" class="form-control" id="name" placeholder="<%=users.price%>" name="price">
+             </div>
+             <div class="form-group">
+               <label for="sloganInput">Slogan</label>
+               <input type="text" class="form-control" id="name" placeholder="<%=users.slogan%>" name="slogan">
+             </div>
+             <div class="form-group">
+               <label for="statusInput">Status</label>
+               <input type="text" class="form-control" id="name" placeholder="<%=users.status%>" name="status">
+             </div>
+             <hr>
+
+             <button type="submit" class="btn btn-primary btn-block">Submit</button>
+           </form>
+         </div>
+
+
+         <%  } %>
+
+
+    </div>
+    <div class="col-md-3">
+      <div class="panel-body">
+        <form action="/signup" method="POST">
+          <h4>Change your status:</h4>
+          <div class="form-group">
+            <select class="form-control" name="role" id="roles">
+              <option value="OWNER">You are owner of some pets </option>
+              <option value="PETTAKER">You will take care of pets </option>
+              <option value="BOTH">You have a pet but you want to take care of other pets aswell </option>
+            </select>
+          </div>
+
+
+          <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>

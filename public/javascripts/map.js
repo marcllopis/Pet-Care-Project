@@ -57,7 +57,7 @@ var infowindow = new google.maps.InfoWindow();
               };
               var pin = new google.maps.Marker({ position, map, title  });
               var contentString = response.name + '\n'  + '$' + response.price + '\n' + response.slogan ;
-      
+
 
               google.maps.event.addListener(pin, 'click', function() {
               infowindow.setContent(contentString + '<br>' + '<button><a href="/users/\'' + response._id + '\'">Contact this pet caretaker</a></button>');

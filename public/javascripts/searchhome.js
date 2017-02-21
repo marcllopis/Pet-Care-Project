@@ -5,9 +5,6 @@ var autocomplete = new google.maps.places.Autocomplete(input);
 
 }
 
-var lati = 0;
-var longi = 0;
-
 $('#searchTextField').change(function() {
 
   var service = new google.maps.places.PlacesService(document.createElement("div"));
@@ -25,10 +22,6 @@ $('#searchTextField').change(function() {
     $("#lat").val(lat);
     $("#long").val(long);
 
-
-
-    var longi = $("#long").val()
-    var lati = $("#lat").val()
 
   });
 });
