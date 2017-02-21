@@ -22,11 +22,15 @@ router.post("/signup", (req, res, next) => {
   var address  = req.body.address;
   var role     = req.body.role;
 
-
   var location = {
-    lat : req.body.lat,
-    long: req.body.long
+    type: 'Point',
+    coordinates: [req.body.lat, req.body.long]
   };
+
+  // var location = {
+  //   lat : req.body.lat,
+  //   long: req.body.long
+  // };
 
   var password = req.body.password;
 
@@ -53,6 +57,7 @@ router.post("/signup", (req, res, next) => {
       email,
       address,
       role,
+      location,
       password: hashPass
     });
 
