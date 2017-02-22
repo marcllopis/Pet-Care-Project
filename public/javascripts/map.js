@@ -51,6 +51,7 @@ var infowindow = new google.maps.InfoWindow();
 
 
 
+
               google.maps.event.addListener(pin, 'click', function() {
               infowindow.setContent(contentString + '<br>' + '<button class="btn btn-success"><a href="/users/' + response._id + '">Contact</a></button>');
                             infowindow.open(map, this);
