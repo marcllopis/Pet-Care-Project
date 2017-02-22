@@ -107,6 +107,17 @@ button a {
   margin: 0 auto;
 }
 
+.textarea-custom{
+  height: 150px;
+}
+
+.pin-google {
+
+  background-color:white;
+  width:200px;
+  height:130px;
+}
+
 /*/////////////////////////////////////////////////////////*/
 /*/////////////////////////////////////////////////////////*/
 #floating-panel {

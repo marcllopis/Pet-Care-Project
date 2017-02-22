@@ -4,7 +4,7 @@ var infowindow = new google.maps.InfoWindow();
 
       var map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: Number(loc.lat), lng: Number(loc.lng)},
-        zoom: 10,
+        zoom: 14,
         mapTypeId: 'roadmap'
 
       });
@@ -43,16 +43,17 @@ var infowindow = new google.maps.InfoWindow();
             if (response.role === "PETTAKER") {
               let title = response.name
               let position = {
-                lat: response.location.coordinates[0],
-                lng: response.location.coordinates[1]
+                lat: response.location.coordinates[1],
+                lng: response.location.coordinates[0]
               };
               var pin = new google.maps.Marker({ position, map, title  });
-              var contentString = response.name + '\n'  + '$' + response.price + '\n' + response.slogan ;
+              var contentString ='<div class="pin-google"><h5>' + response.name + '</h5>'  + '<h5>' + response.price + '$/hour</h5>' + '<h5>' + response.slogan + '</h5>';
+
 
 
 
               google.maps.event.addListener(pin, 'click', function() {
-              infowindow.setContent(contentString + '<br>' + '<button><a href="/users/' + response._id + '">Contact this pet caretaker</a></button>');
+              infowindow.setContent(contentString + '<br>' + '<button class="btn btn-success"><a href="/users/' + response._id + '">Contact</a></button>');
                             infowindow.open(map, this);
                 });
 
@@ -65,8 +66,8 @@ var infowindow = new google.maps.InfoWindow();
 
       // Listen for the event fired when the user selects a prediction and retrieve
       // more details for that place.
-      searchBox.addListener('places_changed', function() {
-        var places = searchBox.getPlaces();
+      $("#goSearch").addListener('places_changed', function() {
+        var places = $("#goSearch").getPlaces();
         if (places.length == 0) {
           return;
         }

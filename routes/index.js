@@ -1,9 +1,17 @@
 var express = require('express');
 // const ensureLogin = require("connect-ensure-login");
 var router = express.Router();
+const bcrypt         = require("bcrypt");
+const bcryptSalt     = 10;
+
 var auth = require('../helpers/auth');
+<<<<<<< HEAD
 const User           = require("../models/user");
 const Pet           = require("../models/pet");
+=======
+const User = require("../models/user");
+
+>>>>>>> 76d3c2b5a6db510de2b8670ad44981c96c0ba7a3
 
 
 router.get('/users/book', auth.checkLoggedIn('You must be login', '/login'), function(req, res, next) {
@@ -11,6 +19,7 @@ router.get('/users/book', auth.checkLoggedIn('You must be login', '/login'), fun
 });
 
 
+<<<<<<< HEAD
 router.get('/profile', auth.checkLoggedIn('You must be login', '/login'), (req, res, next) => {
   // Pet
   //   .findOne({owner: req.user._id})
@@ -35,12 +44,15 @@ router.get('/profile', auth.checkLoggedIn('You must be login', '/login'), (req, 
 });
 
 
+=======
+>>>>>>> 76d3c2b5a6db510de2b8670ad44981c96c0ba7a3
 //route to show a list of users on the search page
 router.get('/search/:format?', (req, res, next) => {
 
 function locateUsers(location, resCallback){
   User.where('location')
-    .near({ center: { coordinates: [location.lat, location.lng], type: 'Point' }, maxDistance: 50000 })
+    .near({ center: { coordinates: [location.lng, location.lat], type: 'Point' }, maxDistance: 2000 })
+
     .find((err, takers) => {
     if (err) {
       return next(err);

@@ -3,10 +3,19 @@
 <div class="row">
 
   <div  style="background-color:lightgrey;" class="col-md-5">
-    <div id="map"></div>
-    <div id="floating-panel">
-      <input id="pac-input" name="name" class="controls" type="text" placeholder="Search Box">
+
+    <div id="floating-panel" class="form-inline">
+      <input id="pac-input" name="name" class="controls searchTextField" type="text" placeholder="Search Box">
+      <input id="lat" type="hidden" class="form-control" placeholder="Full address" name="lat">
+
+      <input id="long" type="hidden" class="form-control" placeholder="Full address" name="long">
+
+
+      <button id="goSearch" class="btn btn-success"><a href="/search">Check the map!</a></button>
+
     </div>
+    <div id="map"></div>
+
   </div>
   <div class="col-md-7 scrolling-custom">
 
@@ -59,6 +68,7 @@
   var loc = (<%- JSON.stringify(location)%>)
 </script>
 
+<script type="text/javascript" src="javascripts/controlinput.js"></script>
 
 
 

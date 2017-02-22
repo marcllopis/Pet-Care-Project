@@ -5,47 +5,12 @@
       if(users.role === "OWNER"){
          %>
       <h2>Hello <%=users.name%>!</h2>
+      <h3>Don't worry, we are here to take care of your pets!</h3>
 
-      <div class="panel-body form-edit-custom">
 
-        <form action="/signup" method="POST">
-          <h4>Edit your profile:</h4>
-          <div class="form-group">
-            <label for="nameInput">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="<%=users.name%>" name="name">
-          </div>
-          <div class="form-group">
-            <label for="surnameInput">Surname</label>
-            <input type="text" class="form-control" id="surname" placeholder="<%=users.surname%>" name="surname">
-          </div>
-          <div class="form-group">
-            <label for="addressInput">Address</label>
-            <input id="searchTextField" type="text" class="form-control" placeholder="<%=users.address%>" name="address">
-          </div>
-          <div class="form-group">
-            <label for="latInput">lat</label>
-            <input id="lat" type="text" class="form-control" placeholder="Full address" name="lat">
-          </div>
-          <div class="form-group">
-            <label for="longInput">long</label>
-            <input id="long" type="text" class="form-control" placeholder="Full address" name="long">
-          </div>
-          <hr>
 
-          <h4>Add some extra information:</h4>
-          <div class="form-group">
-            <label for="phoneInput">Phone number</label>
-            <input type="text" class="form-control" id="name" placeholder="<%=users.phone%>" name="phoneNumber">
-          </div>
-          <div class="form-group">
-            <label for="pictureInput">Profile picture</label>
-            <input type="text" class="form-control" id="name" placeholder="<%=users.profilePicture%>" name="picture">
-          </div>
-          <div class="form-group">
-            <label for="surnameInput">About you</label>
-            <textarea class="form-control" id="surname" placeholder="<%=users.description%>" name="about"></textarea>
-          </div>
-          <hr>
+      <div>
+
 
           <button type="submit" class="btn btn-primary btn-block">Submit</button>
         </form>
@@ -69,105 +34,345 @@
           <div class="form-group">
             <label for="typeInput">Type of animal and breed</label>
             <input id="lat" type="text" class="form-control" placeholder="Type and breed" name="typeOfAnimal">
-          </div>
-          <div class="form-group">
-            <label for="ageInput">Age</label>
-            <input id="long" type="text" class="form-control" placeholder="Age" name="age">
-          </div>
-          <div class="form-group">
-            <label for="genderInput">Gender</label>
-            <input id="long" type="text" class="form-control" placeholder="Gender" name="gender">
-          </div>
-          <div class="form-group">
-            <label for="healthInput">Health information</label>
-            <textarea id="long" class="form-control" placeholder="Full address" name="healthInfo"></textarea>
-          </div>
 
-          <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#view" aria-controls="view" role="tab" data-toggle="tab">View your profile</a></li>
+          <li role="presentation"><a href="#edit" aria-controls="edit" role="tab" data-toggle="tab">Edit your profile</a></li>
+          <li role="presentation"><a href="#pet" aria-controls="pet" role="tab" data-toggle="tab">View your pet</a></li>
+          <li role="presentation"><a href="#reservations" aria-controls="reservations" role="tab" data-toggle="tab">Reservations</a></li>
+          <li role="presentation"><a href="#status" aria-controls="status" role="tab" data-toggle="tab">Status</a></li>
 
-        </form>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="view">
+            <h3>This is your information</h3>
+            <div class="col-md-5 dashboard-custom-box">
+              <h4>Name: <%= users.name %></h4>
+              <h4>Surname: <%= users.surname %></h4>
+              <h4>Phone number: <%= users.phoneNumber %></h4>
+              <h4>Profile pic name: <%= users.profilePicture %></h4>
+              <h4>About you: </h4><p><%= users.description %></p>
+
+            </div>
+
+          </div>
+          <div role="tabpanel" class="tab-pane" id="edit">
+            <h3>Edit your information</h3>
+            <div class="panel-body form-edit-custom">
+
+              <form action="/profile" method="POST">
+                <input type="hidden" name="userId" value=<%= users._id %>>
+                <input type="hidden" name="role" value=<%= users.role %>>
+
+                <h4>Edit your profile:</h4>
+                <div class="form-group">
+                  <label for="nameInput">Name</label>
+                  <input type="text" class="form-control" id="name" placeholder="<%=users.name%>" value="<%=users.name%>" name="name">
+                </div>
+                <div class="form-group">
+                  <label for="surnameInput">Surname</label>
+                  <input type="text" class="form-control" id="surname" placeholder="<%=users.surname%>" value="<%=users.surname%>" name="surname">
+                </div>
+
+                <hr>
+
+                <h4>Add some extra information:</h4>
+                <div class="form-group">
+                  <label for="phoneInput">Phone number</label>
+                  <input type="text" class="form-control" id="name" placeholder="<%=users.phoneNumber%>" value="<%=users.phoneNumber%>" name="phoneNumber">
+                </div>
+                <div class="form-group">
+                  <label for="pictureInput">Profile picture</label>
+                  <input type="text" class="form-control" id="name" placeholder="<%=users.profilePicture%>" value="<%=users.profilePicture%>" name="profilePicture">
+                </div>
+                <div class="form-group">
+                  <label for="aboutInput">About you</label>
+                  <input class="form-control textarea-custom" id="surname" placeholder="<%=users.description%>" value="<%=users.description%>" name="description">
+                </div>
+                <hr>
+
+                <button type="submit" class="btn btn-primary btn-block">Update your profile</button>
+              </form>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="pet">
+
+
+
+
+            <div class="panel-body">
+
+                      <!------------------------>
+                      <!-- ADD A NEW NAV LIST -->
+                      <!------------------------>
+
+                      <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#petInfo">Your pets</a>
+                        </li>
+                        <li><a data-toggle="tab" href="#addPet">Add pet</a>
+                        </li>
+                        <li><a data-toggle="tab" href="#editPet">Edit pet</a>
+                        </li>
+                      </ul>
+
+                      <!-------------------------------------------------------->
+                      <!-- USE THE "TAB-CONTENT" CLASS AGAIN TO ADD YOUR DIVS -->
+                      <!-------------------------------------------------------->
+
+                      <div class="tab-content">
+                        <div id="petInfo" class="tab-pane active">
+                          <h3>Here are your pets</h3>
+
+                        </div>
+                        <div id="addPet" class="tab-pane">
+                          <h3>Add new pets</h3>
+                          <div class="panel-body form-edit-custom">
+                            <form action="/signup" method="POST">
+
+                              <div class="form-group">
+                                <label for="nameInput">Pet name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Pet name" name="name">
+                              </div>
+                              <div class="form-group">
+                                <label for="pictureInput">Picture</label>
+                                <input type="text" class="form-control" id="surname" placeholder="Picture" name="photo">
+                              </div>
+                              <div class="form-group">
+                                <label for="descriptionInput">Description</label>
+                                <textarea id="searchTextField" class="form-control" placeholder="Description about your pet" name="description"></textarea>
+                              </div>
+                              <div class="form-group">
+                                <label for="typeInput">Type of animal and breed</label>
+                                <input id="lat" type="text" class="form-control" placeholder="Type and breed" name="typeOfAnimal">
+                              </div>
+                              <div class="form-group">
+                                <label for="ageInput">Age</label>
+                                <input id="long" type="text" class="form-control" placeholder="Age" name="age">
+                              </div>
+                              <div class="form-group">
+                                <label for="genderInput">Gender</label>
+                                <input id="long" type="text" class="form-control" placeholder="Gender" name="gender">
+                              </div>
+                              <div class="form-group">
+                                <label for="healthInput">Health information</label>
+                                <textarea id="long" class="form-control" placeholder="Full address" name="healthInfo"></textarea>
+                              </div>
+
+                              <button type="submit" class="btn btn-primary btn-block">Submit</button>
+
+                            </form>
+
+                          </div>
+                        </div>
+                        <div id="editPet" class="tab-pane">
+                          <h3>Edit your pets</h3>
+                          <div class="panel-body form-edit-custom">
+                            <form action="/signup" method="POST">
+
+                              <div class="form-group">
+                                <label for="nameInput">Pet name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Pet name" name="name">
+                              </div>
+                              <div class="form-group">
+                                <label for="pictureInput">Picture</label>
+                                <input type="text" class="form-control" id="surname" placeholder="Picture" name="photo">
+                              </div>
+                              <div class="form-group">
+                                <label for="descriptionInput">Description</label>
+                                <textarea id="searchTextField" class="form-control" placeholder="Description about your pet" name="description"></textarea>
+                              </div>
+                              <div class="form-group">
+                                <label for="typeInput">Type of animal and breed</label>
+                                <input id="lat" type="text" class="form-control" placeholder="Type and breed" name="typeOfAnimal">
+                              </div>
+                              <div class="form-group">
+                                <label for="ageInput">Age</label>
+                                <input id="long" type="text" class="form-control" placeholder="Age" name="age">
+                              </div>
+                              <div class="form-group">
+                                <label for="genderInput">Gender</label>
+                                <input id="long" type="text" class="form-control" placeholder="Gender" name="gender">
+                              </div>
+                              <div class="form-group">
+                                <label for="healthInput">Health information</label>
+                                <textarea id="long" class="form-control" placeholder="Full address" name="healthInfo"></textarea>
+                              </div>
+
+                              <button type="submit" class="btn btn-primary btn-block">Submit</button>
+
+                            </form>
+
+                          </div>
+                        </div>
+                      </div>
+
+
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="reservations">
+            <h3>Here are your reservations</h3>
+
+          </div>
+          <div role="tabpanel" class="tab-pane" id="status">
+            <h3>Change your status</h3>
+            <div class="col-md-8">
+              <div class="panel-body">
+                <form action="/profile" method="POST">
+                  <h4>Change your status:</h4>
+                  <div class="form-group">
+                    <input type="hidden" name="userId" value=<%= users._id %>>
+                    <input type="hidden" name="name" value=<%= users.name %>>
+                    <input type="hidden" name="surname" value=<%= users.surname %>>
+                    <input type="hidden" name="profilePicture" value=<%= users.profilePicture %>>
+                    <input type="hidden" name="phoneNumber" value=<%= users.phoneNumber %>>
+                    <input type="hidden" name="description" value=<%= users.description %>>
+
+
+                    <select class="form-control" name="role" id="roles">
+                      <option value="OWNER">You are owner of some pets </option>
+                      <option value="PETTAKER">You will take care of pets </option>
+                      <option value="BOTH">You have a pet but you want to take care of other pets aswell </option>
+                    </select>
+                  </div>
+
+
+                  <button type="submit" class="btn btn-primary btn-block">Change your status</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
 
       </div>
-      <hr>
-      <h4>Check your reviews:</h4>
+
+
+
 
       <%  } %>
       <%
       if(users.role === "PETTAKER"){
          %>
          <h2>Hello <%=users.name%>!</h2>
+         <h3>It's great that you want to take care of some pets!</h3>
 
 
-         <div class="panel-body form-edit-custom">
 
-           <form action="/signup" method="POST">
-             <h4>Edit your profile:</h4>
-             <div class="form-group">
-               <label for="nameInput">Name</label>
-               <input type="text" class="form-control" id="name" placeholder="<%=users.name%>" name="name">
-             </div>
-             <div class="form-group">
-               <label for="surnameInput">Surname</label>
-               <input type="text" class="form-control" id="surname" placeholder="<%=users.surname%>" name="surname">
-             </div>
-             <div class="form-group">
-               <label for="addressInput">Address</label>
-               <input id="searchTextField" type="text" class="form-control" placeholder="<%=users.address%>" name="address">
-             </div>
-             <div class="form-group">
-               <label for="latInput">lat</label>
-               <input id="lat" type="text" class="form-control" placeholder="Full address" name="lat">
-             </div>
-             <div class="form-group">
-               <label for="longInput">long</label>
-               <input id="long" type="text" class="form-control" placeholder="Full address" name="long">
-             </div>
-             <hr>
+               <div>
 
-             <h4>Add some extra information:</h4>
-             <div class="form-group">
-               <label for="phoneInput">Phone number</label>
-               <input type="text" class="form-control" id="name" placeholder="<%=users.phone%>" name="phoneNumber">
-             </div>
-             <div class="form-group">
-               <label for="priceInput">Price per hour</label>
-               <input type="text" class="form-control" id="name" placeholder="<%=users.price%>" name="price">
-             </div>
-             <div class="form-group">
-               <label for="sloganInput">Slogan</label>
-               <input type="text" class="form-control" id="name" placeholder="<%=users.slogan%>" name="slogan">
-             </div>
-             <div class="form-group">
-               <label for="statusInput">Status</label>
-               <input type="text" class="form-control" id="name" placeholder="<%=users.status%>" name="status">
-             </div>
-             <hr>
+                 <!-- Nav tabs -->
+                 <ul class="nav nav-tabs" role="tablist">
+                   <li role="presentation" class="active"><a href="#view" aria-controls="view" role="tab" data-toggle="tab">View your profile</a></li>
+                   <li role="presentation"><a href="#edit" aria-controls="edit" role="tab" data-toggle="tab">Edit your profile</a></li>
+                   <li role="presentation"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">View your reviews</a></li>
+                   <li role="presentation"><a href="#reservations" aria-controls="reservations" role="tab" data-toggle="tab">Reservations</a></li>
+                   <li role="presentation"><a href="#status" aria-controls="status" role="tab" data-toggle="tab">Status</a></li>
 
-             <button type="submit" class="btn btn-primary btn-block">Submit</button>
-           </form>
-         </div>
+                 </ul>
+
+                 <!-- Tab panes -->
+                 <div class="tab-content">
+                   <div role="tabpanel" class="tab-pane active" id="view">
+                     <h3>This is your information</h3>
+                     <div class="col-md-5 dashboard-custom-box">
+                       <h4>Name: <%= users.name %></h4>
+                       <h4>Surname: <%= users.surname %></h4>
+                       <h4>Phone number: <%= users.phoneNumber %></h4>
+                       <h4>Profile pic name: <%= users.profilePicture %></h4>
+                       <h4>About you: </h4><p><%= users.description %></p>
+
+                     </div>
+                   </div>
+                   <div role="tabpanel" class="tab-pane" id="edit">
+                     <h3>Edit your information</h3>
+                     <div class="panel-body form-edit-custom">
+
+                       <form action="/profile" method="POST">
+                         <input type="hidden" name="userId" value=<%= users._id %>>
+                         <input type="hidden" name="role" value=<%= users.role %>>
+
+                         <h4>Edit your profile:</h4>
+                         <div class="form-group">
+                           <label for="nameInput">Name</label>
+                           <input type="text" class="form-control" id="name" placeholder="<%=users.name%>" value="<%=users.name%>" name="name">
+                         </div>
+                         <div class="form-group">
+                           <label for="surnameInput">Surname</label>
+                           <input type="text" class="form-control" id="surname" placeholder="<%=users.surname%>" value="<%=users.surname%>" name="surname">
+                         </div>
+
+                         <hr>
+
+                         <h4>Add some extra information:</h4>
+                         <div class="form-group">
+                           <label for="phoneInput">Phone number</label>
+                           <input type="text" class="form-control" id="name" placeholder="<%=users.phoneNumber%>" value="<%=users.phoneNumber%>" name="phoneNumber">
+                         </div>
+                         <div class="form-group">
+                           <label for="pictureInput">Profile picture</label>
+                           <input type="text" class="form-control" id="name" placeholder="<%=users.profilePicture%>" value="<%=users.profilePicture%>" name="profilePicture">
+                         </div>
+                         <div class="form-group">
+                           <label for="aboutInput">About you</label>
+                           <input class="form-control textarea-custom" id="surname" placeholder="<%=users.description%>" value="<%=users.description%>" name="description">
+                         </div>
+                         <hr>
+
+                         <button type="submit" class="btn btn-primary btn-block">Update your profile</button>
+                       </form>
+                     </div>
+                   </div>
+                   <div role="tabpanel" class="tab-pane" id="reviews">
+
+                    <h3>Here are the reviews users wrote about you</h3>
+
+                   </div>
+                   <div role="tabpanel" class="tab-pane" id="reservations">
+                     <h3>Here are your reservations</h3>
+
+                   </div>
+                   <div role="tabpanel" class="tab-pane" id="status">
+                     <h3>Change your status</h3>
+                     <div class="col-md-8">
+                       <div class="panel-body">
+                         <form action="/profile" method="POST">
+                           <h4>Change your status:</h4>
+                           <div class="form-group">
+                             <input type="hidden" name="userId" value=<%= users._id %>>
+                             <input type="hidden" name="name" value=<%= users.name %>>
+                             <input type="hidden" name="surname" value=<%= users.surname %>>
+                             <input type="hidden" name="profilePicture" value=<%= users.profilePicture %>>
+                             <input type="hidden" name="phoneNumber" value=<%= users.phoneNumber %>>
+                             <input type="hidden" name="description" value=<%= users.description %>>
+
+
+                             <select class="form-control" name="role" id="roles">
+                               <option value="PETTAKER">You will take care of pets </option>
+                               <option value="OWNER">You are owner of some pets </option>
+                               <option value="BOTH">You have a pet but you want to take care of other pets aswell </option>
+                             </select>
+                           </div>
+
+
+                           <button type="submit" class="btn btn-primary btn-block">Change your status</button>
+                         </form>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+
+               </div>
+
 
 
          <%  } %>
 
 
     </div>
-    <div class="col-md-3">
-      <div class="panel-body">
-        <form action="/signup" method="POST">
-          <h4>Change your status:</h4>
-          <div class="form-group">
-            <select class="form-control" name="role" id="roles">
-              <option value="OWNER">You are owner of some pets </option>
-              <option value="PETTAKER">You will take care of pets </option>
-              <option value="BOTH">You have a pet but you want to take care of other pets aswell </option>
-            </select>
-          </div>
 
-
-          <button type="submit" class="btn btn-primary btn-block">Submit</button>
-        </form>
-      </div>
-    </div>
   </div>
 </div>
+
+<script type="text/javascript" src="javascripts/profile.js"></script>

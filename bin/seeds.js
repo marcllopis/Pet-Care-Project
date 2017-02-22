@@ -15,7 +15,7 @@ const owner = new User({
   role: 'OWNER',
   location:{
     type:'Point',
-    coordinates: [41.390205, 2.154007]
+    coordinates: [2.154007, 41.390205]
   },
   address: 'BCN',
 });
@@ -29,7 +29,7 @@ const takers = [
     role: 'PETTAKER',
     location:{
       type:'Point',
-      coordinates: [41.390205, 2.154007]
+      coordinates: [2.154007, 41.390205]
     },
     address: 'New York City',
     phoneNumber: '+34677798451',
@@ -46,7 +46,7 @@ const takers = [
     role: 'PETTAKER',
     location:{
       type:'Point',
-      coordinates: [42.390205, 2.354007]
+      coordinates: [2.354007, 42.390205]
     },
     address: 'Barcelona',
     phoneNumber: '+34677798451',
@@ -63,7 +63,7 @@ const takers = [
     role: 'PETTAKER',
     location:{
       type:'Point',
-      coordinates: [41.890205, 2.254007]
+      coordinates: [2.254007, 41.890205]
     },
     address: 'Hospitalet City',
     phoneNumber: '+34677798451',
@@ -80,7 +80,7 @@ const takers = [
     role: 'PETTAKER',
     location:{
       type:'Point',
-      coordinates: [41.990205, 2.154007]
+      coordinates: [2.154007, 41.990205]
     },
     address: 'Beach City',
     phoneNumber: '+34677798451',
@@ -97,7 +97,7 @@ const takers = [
     role: 'PETTAKER',
     location:{
       type:'Point',
-      coordinates: [41.3843889, 2.169593099999929]
+      coordinates: [2.169593099999929, 41.3843889]
     },
     address: 'Code City',
     phoneNumber: '+34677798451',
@@ -114,7 +114,7 @@ const takers = [
     role: 'PETTAKER',
     location:{
       type:'Point',
-      coordinates: [41.405859, -8.523700100000042]
+      coordinates: [-8.523700100000042, 41.405859]
     },
     address: 'Beach City',
     phoneNumber: '+34677798451',
@@ -131,7 +131,7 @@ const takers = [
     role: 'PETTAKER',
     location:{
       type:'Point',
-      coordinates: [41.39580509999999, 2.1918571999999585]
+      coordinates: [2.1918571999999585, 41.39580509999999]
     },
     address: 'Beach City',
     phoneNumber: '+34677798451',
@@ -148,7 +148,7 @@ const takers = [
     role: 'PETTAKER',
     location:{
       type:'Point',
-      coordinates: [41.3969391, 2.189640700000041]
+      coordinates: [2.189640700000041, 41.3969391]
     },
     address: 'Beach City',
     phoneNumber: '+34677798451',
@@ -165,7 +165,7 @@ const takers = [
     role: 'PETTAKER',
     location:{
       type:'Point',
-      coordinates: [41.40503289999999, 2.19103419999999]
+      coordinates: [2.19103419999999, 41.40503289999999]
     },
     address: 'Beach City',
     phoneNumber: '+34677798451',
@@ -182,7 +182,7 @@ const takers = [
     role: 'PETTAKER',
     location:{
       type:'Point',
-      coordinates: [40.4137818, -3.6921270999999933]
+      coordinates: [-3.6921270999999933, 40.4137818]
     },
     address: 'Beach City',
     phoneNumber: '+34677798451',
@@ -199,7 +199,7 @@ const takers = [
     role: 'PETTAKER',
     location:{
       type:'Point',
-      coordinates: [41.39581630000001, 2.1887362999999596]
+      coordinates: [2.1887362999999596, 41.39581630000001]
     },
     address: 'Beach City',
     phoneNumber: '+34677798451',
@@ -216,7 +216,7 @@ const takers = [
     role: 'PETTAKER',
     location:{
       type:'Point',
-      coordinates: [41.4080056, 2.1902811999999585]
+      coordinates: [2.1902811999999585, 41.4080056]
     },
     address: 'Beach City',
     phoneNumber: '+34677798451',
@@ -233,7 +233,7 @@ const takers = [
     role: 'PETTAKER',
     location:{
       type:'Point',
-      coordinates: [39.568009, 2.6305170000000544]
+      coordinates: [2.6305170000000544, 39.568009]
     },
     address: 'Beach City',
     phoneNumber: '+34677798451',
@@ -250,7 +250,7 @@ const takers = [
     role: 'PETTAKER',
     location:{
       type:'Point',
-      coordinates: [41.4097037, 2.1892365999999583]
+      coordinates: [2.1892365999999583, 41.4097037]
     },
     address: 'Beach City',
     phoneNumber: '+34677798451',
