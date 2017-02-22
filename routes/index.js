@@ -19,7 +19,8 @@ router.get('/search/:format?', (req, res, next) => {
 
 function locateUsers(location, resCallback){
   User.where('location')
-    .near({ center: { coordinates: [location.lat, location.lng], type: 'Point' }, maxDistance: 50000 })
+    .near({ center: { coordinates: [location.lng, location.lat], type: 'Point' }, maxDistance: 2000 })
+
     .find((err, takers) => {
     if (err) {
       return next(err);

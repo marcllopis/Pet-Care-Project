@@ -1,13 +1,13 @@
 function init() {
 
-var input = document.getElementById('searchTextField');
+var input = $('.searchTextField');
 var autocomplete = new google.maps.places.Autocomplete(input);
 
 }
 
 
 
-$('#searchTextField').change(function() {
+$('.searchTextField').change(function() {
 
 
 setTimeout(getCoordinates,1000);
@@ -23,7 +23,7 @@ function getCoordinates(){
   var request = {
     location: {lat: 0, lng: 0},
     radius: "500",
-    query: $("#searchTextField").val()
+    query: $(".searchTextField").val()
   };
 
   service.textSearch(request, function(places){
@@ -36,6 +36,12 @@ function getCoordinates(){
   });
 }
 
+
+$("#goSearch").click(function(){
+  if ($("#lat").val() !== "" && $("#long").val() !== "") {
+    $(this).find("a").attr("href", "/search?lat=" + $("#lat").val() + "&long=" + $("#long").val())
+  }
+})
 
 $(document).ready(function(){
   init();
