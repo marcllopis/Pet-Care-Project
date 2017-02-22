@@ -12,21 +12,12 @@ var infowindow = new google.maps.InfoWindow();
       // Create the search box and link it to the UI element.
       var input = document.getElementById('pac-input');
       var searchBox = new google.maps.places.SearchBox(input);
-        // console.log(input);
-      // console.log(searchBox);
-      // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-      // Bias the SearchBox results towards current map's viewport.
 
 
-// $('#pac-input').change(function() {
-//   window.location.href = "http://localhost:3000/search?lat=" + map.center.lat() + "&long=" + map.center.lng();
-//
-// });
       map.addListener('bounds_changed', function() {
         searchBox.setBounds(map.getBounds());
       });
-      // console.log(myTakers);
+
 
       map.addListener('dragend', function() {
         console.log("test");
@@ -57,26 +48,11 @@ var infowindow = new google.maps.InfoWindow();
               };
               var pin = new google.maps.Marker({ position, map, title  });
               var contentString = response.name + '\n'  + '$' + response.price + '\n' + response.slogan ;
-      
 
               google.maps.event.addListener(pin, 'click', function() {
-              infowindow.setContent(contentString + '<br>' + '<button><a href="/users/\'' + response._id + '\'">Contact this pet caretaker</a></button>');
+              infowindow.setContent(contentString + '<br>' + '<button><a href="/users/' + response._id + '">Contact this pet caretaker</a></button>');
                             infowindow.open(map, this);
                 });
-
-                                                              // <a href="/search">Check the map!</a>
-            // }
-                      // var infowindow = new google.maps.InfoWindow({
-                      //   content: contentString
-                      // });
-                      //
-                      // pin.addListener('click', function() {
-                      //   infowindow.open(map, pin);
-                      // });
-                      //
-                      // infowindow.addListener('click', function(){
-                      //       window.location.href = "http://localhost:3000/users/" + response._id;
-                      // })
 
 
             }
@@ -86,7 +62,6 @@ var infowindow = new google.maps.InfoWindow();
       })
 
 
-
       // Listen for the event fired when the user selects a prediction and retrieve
       // more details for that place.
       searchBox.addListener('places_changed', function() {
@@ -94,8 +69,6 @@ var infowindow = new google.maps.InfoWindow();
         if (places.length == 0) {
           return;
         }
-
-
 
 
         // For each place, get the icon, name and location.
