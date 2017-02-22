@@ -12,17 +12,9 @@ var infowindow = new google.maps.InfoWindow();
       // Create the search box and link it to the UI element.
       var input = document.getElementById('pac-input');
       var searchBox = new google.maps.places.SearchBox(input);
-        // console.log(input);
-      // console.log(searchBox);
-      // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
       // Bias the SearchBox results towards current map's viewport.
 
-
-// $('#pac-input').change(function() {
-//   window.location.href = "http://localhost:3000/search?lat=" + map.center.lat() + "&long=" + map.center.lng();
-//
-// });
       map.addListener('bounds_changed', function() {
         searchBox.setBounds(map.getBounds());
       });
@@ -60,24 +52,9 @@ var infowindow = new google.maps.InfoWindow();
 
 
               google.maps.event.addListener(pin, 'click', function() {
-              infowindow.setContent(contentString + '<br>' + '<button><a href="/users/\'' + response._id + '\'">Contact this pet caretaker</a></button>');
+              infowindow.setContent(contentString + '<br>' + '<button><a href="/users/' + response._id + '">Contact this pet caretaker</a></button>');
                             infowindow.open(map, this);
                 });
-
-                                                              // <a href="/search">Check the map!</a>
-            // }
-                      // var infowindow = new google.maps.InfoWindow({
-                      //   content: contentString
-                      // });
-                      //
-                      // pin.addListener('click', function() {
-                      //   infowindow.open(map, pin);
-                      // });
-                      //
-                      // infowindow.addListener('click', function(){
-                      //       window.location.href = "http://localhost:3000/users/" + response._id;
-                      // })
-
 
             }
           });
