@@ -19,6 +19,7 @@ const userSchema = new Schema({
     //stuff needed for pet taker
 
     pets: Array,
+    rating: Array,
     description: String,
     price: Number,
     slogan: String,

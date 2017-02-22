@@ -1,18 +1,16 @@
 var express = require('express');
 // const ensureLogin = require("connect-ensure-login");
 var router = express.Router();
+const bcrypt         = require("bcrypt");
+const bcryptSalt     = 10;
+
 var auth = require('../helpers/auth');
-const User           = require("../models/user");
+const User = require("../models/user");
 
 
 
 router.get('/users/book', auth.checkLoggedIn('You must be login', '/login'), function(req, res, next) {
   res.render('booking/booktaker');
-});
-
-
-router.get('/profile', auth.checkLoggedIn('You must be login', '/login'), (req, res, next) => {
-  res.render('dashboard/profile', { users: req.user });
 });
 
 

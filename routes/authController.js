@@ -2,11 +2,48 @@ var express          = require('express');
 const passport       = require("passport");
 const bcrypt         = require("bcrypt");
 const User           = require("../models/user");
+var auth = require('../helpers/auth');
+const mongoose = require("mongoose");
 
 var router = express.Router();
 const bcryptSalt     = 10;
 
 /* GET users listing. */
+
+
+router.get('/profile', auth.checkLoggedIn('You must be login', '/login'), (req, res, next) => {
+  // console.log(req.user);
+  res.render('dashboard/profile', { users: req.user });
+});
+
+
+router.post('/profile', (req, res, next) => {
+
+
+  let userToUpdate = {
+    name: req.body.name,
+    surname: req.body.surname,
+    profilePicture: req.body.profilePicture,
+    phoneNumber: req.body.phoneNumber,
+    description: req.body.description,
+    role: req.body.role
+  }
+
+  var userId = req.body.userId.toString();
+  userId = mongoose.Types.ObjectId(userId)
+
+
+  User.findByIdAndUpdate(userId, userToUpdate, (err, users)=>{
+    if (err) {
+      console.log("GOT AN ERROR");
+      next(err)
+    } else {
+
+      console.log("GOT UPDATED");
+      res.redirect('/profile');
+    }
+  })
+});
 
 
 
@@ -26,11 +63,6 @@ router.post("/signup", (req, res, next) => {
     type: 'Point',
     coordinates: [req.body.lat, req.body.long]
   };
-
-  // var location = {
-  //   lat : req.body.lat,
-  //   long: req.body.long
-  // };
 
   var password = req.body.password;
 

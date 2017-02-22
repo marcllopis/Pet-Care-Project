@@ -9,6 +9,14 @@ var autocomplete = new google.maps.places.Autocomplete(input);
 
 $('#searchTextField').change(function() {
 
+
+setTimeout(getCoordinates,2000);
+
+
+});
+
+
+function getCoordinates(){
   var service = new google.maps.places.PlacesService(document.createElement("div"));
 
 
@@ -26,7 +34,8 @@ $('#searchTextField').change(function() {
     $("#long").val(long);
 
   });
-});
+}
+
 
 $(document).ready(function(){
   init();
