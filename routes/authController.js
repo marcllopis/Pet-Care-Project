@@ -11,10 +11,10 @@ const bcryptSalt     = 10;
 /* GET users listing. */
 
 
-router.get('/profile', auth.checkLoggedIn('You must be login', '/login'), (req, res, next) => {
-  // console.log(req.user);
-  res.render('dashboard/profile', { users: req.user });
-});
+// router.get('/profile', auth.checkLoggedIn('You must be login', '/login'), (req, res, next) => {
+//   // console.log(req.user);
+//   res.render('dashboard/profile', { users: req.user });
+// });
 
 
 router.post('/profile', (req, res, next) => {

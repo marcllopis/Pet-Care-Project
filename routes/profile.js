@@ -5,6 +5,29 @@ var auth = require('../helpers/auth');
 const Pet           = require("../models/pet");
 const User           = require("../models/user");
 
+router.get('/profile', auth.checkLoggedIn('You must be login', '/login'), (req, res, next) => {
+  // Pet
+  //   .findOne({owner: req.user._id})
+  //   .populate('owner')
+  //   .exec((err, pets) => {
+  //     if (err) {
+  //       next(err);
+  //       return;
+  //     }
+  // console.log(pets);
+    User
+      .findOne({_id: req.user._id})
+      .populate("pets")
+      .exec((err, user) => {
+        if (err) {
+          next(err);
+          return;
+        }
+        console.log(user);
+      });
+  res.render('dashboard/profile', { users: req.user });
+});
+
 
   router.post('/profile', (req, res, next) => {
     var  name = req.body.petname;
