@@ -10,23 +10,9 @@ router.get('/users/book', auth.checkLoggedIn('You must be login', '/login'), fun
   res.render('booking/booktaker');
 });
 
-router.get('/profile', auth.checkLoggedIn('You must be login', '/login'), function(req, res, next) {
-  res.render('dashboard/profile');
-});
 
-router.get('/profile', (req, res, next) => {
-  const users = req.session.currentUser.name;
-  console.log("THIS IS THE USER LOGGED");
-  console.log(users);
-  User.find({}, (err, users) => {
-
-   if (err) { return next(err)}
-
-    res.render('dashboard/profile', {
-     users : users
-
-   });
- });
+router.get('/profile', auth.checkLoggedIn('You must be login', '/login'), (req, res, next) => {
+  res.render('dashboard/profile', { users: req.user });
 });
 
 
