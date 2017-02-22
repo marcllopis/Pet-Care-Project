@@ -13,12 +13,11 @@ var infowindow = new google.maps.InfoWindow();
       var input = document.getElementById('pac-input');
       var searchBox = new google.maps.places.SearchBox(input);
 
-      // Bias the SearchBox results towards current map's viewport.
 
       map.addListener('bounds_changed', function() {
         searchBox.setBounds(map.getBounds());
       });
-      // console.log(myTakers);
+
 
       map.addListener('dragend', function() {
         console.log("test");
@@ -51,17 +50,18 @@ var infowindow = new google.maps.InfoWindow();
               var contentString ='<div class="pin-google"><h5>' + response.name + '</h5>'  + '<h5>' + response.price + '$/hour</h5>' + '<h5>' + response.slogan + '</h5>';
 
 
+
               google.maps.event.addListener(pin, 'click', function() {
               infowindow.setContent(contentString + '<br>' + '<button class="btn btn-success"><a href="/users/' + response._id + '">Contact</a></button>');
                             infowindow.open(map, this);
                 });
+
 
             }
           });
         },
         error: function(error){console.log(error)}
       })
-
 
 
       // Listen for the event fired when the user selects a prediction and retrieve
