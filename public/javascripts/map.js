@@ -56,7 +56,6 @@ var infowindow = new google.maps.InfoWindow();
                             infowindow.open(map, this);
                 });
 
-
             }
           });
         },

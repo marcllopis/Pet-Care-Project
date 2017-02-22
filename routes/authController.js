@@ -27,11 +27,6 @@ router.post("/signup", (req, res, next) => {
     coordinates: [req.body.lat, req.body.long]
   };
 
-  // var location = {
-  //   lat : req.body.lat,
-  //   long: req.body.long
-  // };
-
   var password = req.body.password;
 
 
@@ -85,7 +80,7 @@ router.post("/login", passport.authenticate("local", {
   failureRedirect: "/login",
   failureFlash: true,
   passReqToCallback: true
-}));
+} ));
 
 router.get("/logout", (req, res) => {
   req.logout();

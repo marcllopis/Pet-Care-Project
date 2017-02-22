@@ -19,6 +19,7 @@ mongoose.connect(`mongodb://localhost:${portDB}/${databaseName}`);
 // routes
 var index = require('./routes/index');
 var authController = require('./routes/authController');
+var profile = require('./routes/profile');
 
 var app = express();
 
@@ -43,7 +44,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret: "passport-local-strategy",
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: true,
+  cookie           : { maxAge: 60000 }
+
 }));
 app.use(flash());
 
@@ -53,6 +56,8 @@ auth.passport(passport);
 
 app.use('/', authController);
 app.use('/', index);
+app.use('/', profile);
+
 
 
 
