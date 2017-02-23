@@ -86,8 +86,8 @@ button a {
 
 .scrolling-custom{
 
-  /*need to find a class to control the scrolling on the page*/
-
+position:fixed;
+left: 41%;
 }
 
 
@@ -116,6 +116,67 @@ button a {
   background-color:white;
   width:200px;
   height:130px;
+}
+
+.banner {
+    background-image: url("http://localhost:3000/images/bghome.jpg");
+    margin-bottom: 0;
+    height: 70vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.title {
+  margin-top: 20px;
+  color: #fff;
+  text-shadow: 0 1px 3px #0f0f0f;
+}
+
+.container-home-custom{
+  padding: 0px;
+  border-radius: 0px;
+}
+
+.center-form{
+  color: #fff;
+  text-shadow: 0 1px 3px #0f0f0f;
+  margin-left: 17%;
+  margin-top: 40px;
+}
+
+.input-lg-custom{
+  width: 400px !important;
+}
+
+.back-grey{
+  background-color: #e4e7e7;
+  color: black;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+
+.img-custom{
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.marg-custom{
+  margin-top: 30px;
+}
+
+.back-black {
+background-color: #3B3B3B;
+color: gray;
+font-size: 10px;
+padding-top: 2%;
+}
+
+#map{
+  height: 100px;
 }
 
 /*/////////////////////////////////////////////////////////*/
