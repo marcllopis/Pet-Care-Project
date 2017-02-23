@@ -71,18 +71,36 @@
       </div>
     </div>
     </div>
-
     <div class="col-md-4 form-group book-taker-box">
-      <h3 class="text-center">Book <%= takers.name %> now</h3><br>
-      <h4>Dates:</h4>
-      from <input type="date" name="date-from" value=""> <br><br>to <input type="date" name="date-to" value="">
-      <br><br>
-      <h4>Hours per day:</h4>
-      <input type="number" name="date-from" value=""><br><br><br>
-      <h2 class=text-center><button class="btn btn-success"><a href="/users/book">BOOK NOW</a></button><h2>
+      <form action="/booking" method="post">
+      <div class="form-group">
+        <h3 class="text-center">Book <%= takers.name %> now</h3>
+      </div>
+      <div class="form-group">
+        <label for="daeInput">Start Date</label>
+      <input type="date" name="datefrom">
+      </div>
+      <div class="form-group">
+        <label for="datteInput">End Date</label>
+        <input type="date" name="dateto" value="">
+      </div>
+      <div class="form-group">
+        <label for="timeInput">Start Time</label>
+        <input type="time" name="starttime">
+      </div>
+      <div class="form-group">
+        <label for="timeInput">End Time</label>
+        <input type="time" name="endtime">
+      </div>
+      <div class="form-group">
+        <label for="aboutInput">Additional comments</label>
+        <input type="text" name="comment" placeholder="comment">
+      </div>
+      <input type="hidden" name="takerid" value="<%= takers._id %>">
+      <button type="submit" class="btn btn-primary btn-block">Book now</button>
+      </form>
     </div>
   </div>
-
 </div>
 <br><br>
 

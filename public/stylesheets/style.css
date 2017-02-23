@@ -242,3 +242,16 @@ padding-top: 2%;
       padding: 0px;
       line-height: 30px;
     }
+
+    .takers-container-custom{
+     width: 70%;
+    }
+
+    .book-taker-box{
+ -webkit-box-shadow: 11px 14px 38px -21px rgba(0,0,0,0.58);
+ -moz-box-shadow: 11px 14px 38px -21px rgba(0,0,0,0.58);
+ box-shadow: 11px 14px 38px -21px rgba(0,0,0,0.58);
+ border-radius: 10px;
+ border: 1px solid grey;
+ padding: 20px;
+}

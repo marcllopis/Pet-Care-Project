@@ -1,36 +1,30 @@
 <br><br><br><br>
 
-
 <div class="container takers-container-custom">
-
-      <div class="row "><br>
-        <h2> You are about to book PETTAKER-NAME</h2>
-        <hr>
-        <h3>USERNAME, here all the details of your booking:</h3>
-        <div class="booking-info">
-          <h4>About the user:</h4>
-          <hr>
-          <p><b>Who will take care of your pet:</b> PETTAKER-NAME</p>
-          <p><b>Address:</b> PETTAKER-ADDRESS</p>
-          <p><b>Phone number:</b> PETTAKER-PHONE</p>
-          <p><b>Email:</b> PETTAKER-EMAIL</p>
-          <br><br>
-          <h4>About the booking:</h4>
-          <hr>
-          <p><b>Please, consider this while taking care of my pet:</b>  <br>
-          REQUEST-CONSIDERATIONS<br>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam a voluptatum maiores excepturi amet modi voluptatibus dolorem officia similique totam, maxime nesciunt harum culpa, quam facere nihil itaque inventore voluptates!
-          </p>
-          <p><b>From:</b> REQUEST-FROM</p>
-          <p><b>To:</b> REQUEST-TO</p>
-          <p><b>Hours per day:</b> RESQUEST-HOURS</p>
-          <p><b>Total price:</b> PETTAKER-PRICE * REQUEST-HOURS</p><br><br>
-          <button class="btn btn-info"><a href="/profile"></a>Go back to your profile</button>
-        </div>
-      </div>
-
+     <div class="row "><br>
+       <h2> You are about to book  <%= booking.petcaretaker.name %></h2>
+       <hr>
+       <h3><%= booking.owner.name %>, here all the details of your booking:</h3>
+       <div class="booking-info">
+         <h4>About  <%= booking.petcaretaker.name %>:</h4>
+         <hr>
+         <p><b>Who will take care of your pet:</b> <%= booking.petcaretaker.name %> </p>
+         <p><b>Address:</b> <%= booking.petcaretaker.address %></p>
+         <p><b>Phone number:</b> <%= booking.petcaretaker.phoneNumber %> </p>
+         <p><b>Email:</b> <%= booking.petcaretaker.email %></p>
+         <br><br>
+         <h4>About the booking:</h4>
+         <hr>
+         <p><b>Please, consider this while taking care of my pet:</b><%= booking.comment %></p>
+         <p><b>From:</b> <%= booking.start %></p>
+         <p><b>To:</b> <%= booking.end %></p>
+         <p><b>Hours per day:</b> <%= booking.hours %></p>
+         <p><b>Number of days:</b> <%= booking.numberofdays %></p>
+         <p><b>Total price:</b> € <%= booking.hours * booking.petcaretaker.price * booking.numberofdays %></p><br><br>
+         <button class="btn btn-info"><a href="/profile"></a>Go back to your profile</button>
+       </div>
+     </div>
 </div>
-
 <br><br>
       <div class="content-fluid back-black">
         <div class="row">
