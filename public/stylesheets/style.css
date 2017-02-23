@@ -157,8 +157,9 @@ button a {
 
 
 .img-custom{
-  width: 100%;
-  height: auto;
+  width: 80%;
+  height: 200px;
+  margin-left: 20px;
   margin-bottom: 10px;
 }
 
@@ -174,7 +175,7 @@ padding-top: 2%;
 }
 
 .map-view{
-  height: 90vh;
+  height: 80vh;
   background-color: white;
 }
 
@@ -203,14 +204,10 @@ padding-top: 2%;
 /*/////////////////////////////////////////////////////////*/
 /*/////////////////////////////////////////////////////////*/
 #floating-panel {
-      position: absolute;
-      top: 10px;
-      left: 25%;
+
       z-index: 5;
       background-color: #fff;
       padding: 5px;
-      border: 1px solid #999;
-      text-align: center;
       line-height: 30px;
-      padding-left: 10px;
+      padding-left: 10%;
     }
