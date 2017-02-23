@@ -1,9 +1,8 @@
 <div class="container-fluid">
 <div class="row">
-  <h1>Here is the Map with all users around you!</h1>
-
+<br><br><br>
 <!-- MAP STARTS -->
-  <div class="col-md-5 map-view">
+  <div class="col-md-5 map-view" style="padding:0!important;">
 
     <div id="floating-panel" class="form-inline">
       <input id="pac-input" name="name" class="controls searchTextField" type="text" placeholder="Search Box">
@@ -15,7 +14,7 @@
       <button id="goSearch" class="btn btn-success"><a href="/search">Check the map!</a></button>
 
     </div>
-    <div id="map"></div>
+    <div id="map" style="position:absolute; height:100%; padding:0; margin:0;"></div>
 
   </div>
 
@@ -39,7 +38,7 @@
         <div class="div col-xs-6">
           <div class="row">
             <div class="col-md-4">
-              <img src="https://s-media-cache-ak0.pinimg.com/564x/dd/49/dd/dd49dd83e894321a9402465c98ebc386.jpg" class ="img-responsive img-thumbnail img-taker-custom" alt="">
+              <img src="https://s-media-cache-ak0.pinimg.com/564x/dd/49/dd/dd49dd83e894321a9402465c98ebc386.jpg" class ="img-responsive img-circle img-taker-custom" alt="">
             </div>
             <div class="col-md-8">
               <h3><%= taker.name %><span style="float:right"><%= taker.price %>€ /hour</span></h3>
@@ -49,7 +48,7 @@
           </div>
           <div class="row">
             <div class="col-md-12"><br>
-              <button class="btn btn-success"><a href="/users/<%= taker._id %>">
+              <button  class="btn btn-primary"><a href="/users/<%= taker._id %>">
       Contact</a></button>
             </div>
           </div>
@@ -67,6 +66,55 @@
 
   </div>
 </div>
+
+<br><br>
+      <div class="content-fluid back-black">
+        <div class="row">
+          <div class="col-xs-2"></div>
+          <div class="col-xs-8">
+              <div class="row">
+                <div class="col-md-3">
+
+                  <h6>RECENT POST</h6>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi vel, assumenda rerum voluptatem esse tenetur placeat aliquam iusto nihil ratione praesentium libero est vitae qui. Laborum repellat laudantium impedit repudiandae.
+                </div>
+                <div class="col-md-3">
+
+                  <h6>REVERA</h6>
+                  Lorem ipsum
+                  <hr>
+                  Lorem ipsum dolor
+                  <hr>
+                  Lorem ipsum
+                  <hr>
+                  Lorem ipsum dolor
+                  <hr>
+                </div>
+                <div class="col-md-3">
+
+                  <h6>META</h6>
+                  Lorem ipsum
+                  <hr>
+                </div>
+                <div class="col-md-3">
+
+                  <h6>ARCHIVES</h6>
+                  Lorem ipsum
+                  <hr>
+                  Lorem ipsum dolor
+                  <hr>
+                  Lorem ipsum
+                  <hr>
+                  Lorem ipsum dolor
+                  <hr>
+                </div>
+
+              </div>
+          </div>
+          <div class="col-xs-2"></div>
+        </div>
+      </div>
+
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

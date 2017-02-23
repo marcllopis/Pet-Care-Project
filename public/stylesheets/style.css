@@ -86,8 +86,6 @@ button a {
 
 .scrolling-custom{
 
-position:fixed;
-left: 41%;
 }
 
 
@@ -175,8 +173,31 @@ font-size: 10px;
 padding-top: 2%;
 }
 
+.map-view{
+  height: 90vh;
+  background-color: white;
+}
+
 #map{
-  height: 100px;
+  height: 100%;
+}
+
+
+.booking-info{
+  -webkit-box-shadow: 11px 14px 38px -21px rgba(0,0,0,0.58);
+  -moz-box-shadow: 11px 14px 38px -21px rgba(0,0,0,0.58);
+  box-shadow: 11px 14px 38px -21px rgba(0,0,0,0.58);
+  border-radius: 10px;
+  border: 1px solid grey;
+  padding: 20px;
+  background-color: #f2f2f2;
+
+}
+
+.icon-custom{
+  margin: 0 auto;
+  width: 100px;
+  height: auto;
 }
 
 /*/////////////////////////////////////////////////////////*/
@@ -190,7 +211,6 @@ padding-top: 2%;
       padding: 5px;
       border: 1px solid #999;
       text-align: center;
-      font-family: 'Roboto','sans-serif';
       line-height: 30px;
       padding-left: 10px;
     }
