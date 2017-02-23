@@ -19,7 +19,7 @@ const userSchema = new Schema({
     //stuff needed for pet taker
 
     pets: [{ type: Schema.Types.ObjectId, ref: 'Pet' }],
-    rating: [{ type: Schema.Types.ObjectId, ref: 'Rating' }],
+    reservations: [{ type: Schema.Types.ObjectId, ref: 'Request' }],
     description: String,
     price: Number,
     slogan: String,
