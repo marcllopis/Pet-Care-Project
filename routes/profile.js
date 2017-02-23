@@ -1,13 +1,14 @@
-var express          = require('express');
+var express           = require('express');
 var mongoose          = require('mongoose');
-var router = express.Router();
-var auth = require('../helpers/auth');
-const Pet           = require("../models/pet");
-const User           = require("../models/user");
-const Request           = require("../models/request");
+var router            = express.Router();
+var auth              = require('../helpers/auth');
+const Pet             = require("../models/pet");
+const User            = require("../models/user");
+const Request         = require("../models/request");
+const Rating          =  require("../models/rating");
 
 router.get('/profile', auth.checkLoggedIn('You must be login', '/login'), (req, res, next) => {
-    User
+       User
       .findOne({_id: req.user._id})
       .populate("pets")
       .populate("reservations")
@@ -15,9 +16,9 @@ router.get('/profile', auth.checkLoggedIn('You must be login', '/login'), (req, 
         if (err) {
           next(err);
           return;
-        }
+          }
 
-        Request
+          Request
           .find({owner: req.user._id})
           .populate("petcaretaker")
           .exec((err, booking) => {
@@ -25,13 +26,21 @@ router.get('/profile', auth.checkLoggedIn('You must be login', '/login'), (req, 
               next(err);
               return;
             }
-            console.log(users);
-            console.log("----------");
-            console.log(booking);
-            res.render('dashboard/profile', {users, booking});
-      });
 
+            Rating
+            .find({owner: req.user._id})
+            .populate("owner")
+            .populate("petcaretaker")
+            .exec((err, review) => {
+              if (err) {
+                next(err);
+                return;
+              }
+              console.log(review);
+            res.render('dashboard/profile', {users, booking,review});
+      });
     });
+  })
 });
 
 

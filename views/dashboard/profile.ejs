@@ -14,8 +14,8 @@
           <li role="presentation"><a href="#edit" aria-controls="edit" role="tab" data-toggle="tab">Edit your profile</a></li>
           <li role="presentation"><a href="#pet" aria-controls="pet" role="tab" data-toggle="tab">View your pet</a></li>
           <li role="presentation"><a href="#reservations" aria-controls="reservations" role="tab" data-toggle="tab">Reservations</a></li>
+          <li role="presentation"><a href="#reviews" aria-controls="status" role="tab" data-toggle="tab">Reviews</a></li>
           <li role="presentation"><a href="#status" aria-controls="status" role="tab" data-toggle="tab">Status</a></li>
-
         </ul>
 
         <!-- Tab panes -->
@@ -241,7 +241,8 @@
                                       <h4>You have booked <%= reservation.petcaretaker.name %>:</h4>
                                       <p>From: <%= reservation.start %> &nbsp;&nbsp;&nbsp; To: <%= reservation.end %></p>
                                       <p>For : <%= reservation.hours * reservation.petcaretaker.price * reservation.numberofdays %> €</p>
-                                      <button class="btn btn-success">Write a review</button><br>
+                                      <button class="btn btn-success"><a href="/reviews/<%= reservation._id %>">
+                              Write review</a></button><br>
                                       <hr>
                                       <br>
                                       <%  }}) %>
@@ -251,7 +252,31 @@
 
                           </div>
 
+
           </div>
+
+          <div role="tabpanel" class="tab-pane" id="reviews">
+                      <h3>Reviews</h3>
+
+                        <div class="panel-body">
+                                      <h3>Here are the reservations you have right now</h3><br><br>
+                                      <%
+                                      review.forEach((review) => {
+                                        if(users.role === "OWNER"){
+
+                                      %>
+                                      <h4>You have reviewed <%= review.petcaretaker.name %>:</h4>
+                                      <p>On: <%= review.created_at %></p>
+                                      <p>Rating : <%= review.stars%></p>
+                                      <p>Comments : <%= review.evaluation%></p>
+                                      <hr>
+                                      <br>
+                                      <%  }}) %>
+
+                                    </div>
+                                  </div>
+
+
           <div role="tabpanel" class="tab-pane" id="status">
             <h3>Change your status</h3>
             <div class="col-md-8">

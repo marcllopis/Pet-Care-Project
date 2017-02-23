@@ -6,7 +6,7 @@ var autocomplete = new google.maps.places.Autocomplete(input);
 }
 
 $('#searchTextField').change(function() {
-  setTimeout(getCoordinates,1000);
+  setTimeout(getCoordinates,100);
 
 });
 
