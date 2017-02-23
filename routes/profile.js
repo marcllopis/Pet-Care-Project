@@ -4,7 +4,7 @@ var router = express.Router();
 var auth = require('../helpers/auth');
 const Pet           = require("../models/pet");
 const User           = require("../models/user");
-const Request           = require("../models/Request");
+const Request           = require("../models/request");
 
 router.get('/profile', auth.checkLoggedIn('You must be login', '/login'), (req, res, next) => {
     User
@@ -16,9 +16,22 @@ router.get('/profile', auth.checkLoggedIn('You must be login', '/login'), (req, 
           next(err);
           return;
         }
-        console.log(users);
-      res.render('dashboard/profile', {users});
+
+        Request
+          .find({owner: req.user._id})
+          .populate("petcaretaker")
+          .exec((err, booking) => {
+            if (err) {
+              next(err);
+              return;
+            }
+            console.log(users);
+            console.log("----------");
+            console.log(booking);
+            res.render('dashboard/profile', {users, booking});
       });
+
+    });
 });
 
 

@@ -212,12 +212,39 @@
 
                                   <div class="tab-content">
                                     <div id="pendingReservation" class="tab-pane active">
-                                      <h3>Here are the reservations you have right now</h3>
+
+                                      <h3>Here are the reservations you have right now</h3><br><br>
+                                      <%
+                                      var currentTime = new Date();
+                                      booking.forEach((reservation) => {
+                                        if(reservation.end >= currentTime){
+
+                                      %>
+                                      <h4>You have booked <%= reservation.petcaretaker.name %>:</h4>
+                                      <p>From: <%= reservation.start %>&nbsp;&nbsp;&nbsp; To: <%= reservation.end %></p>
+                                      <p>For : <%= reservation.hours * reservation.petcaretaker.price * reservation.numberofdays %> €</p>
+                                      <button class="btn btn-success">View Details</button><br>
+                                      <hr>
+                                      <br>
+                                      <%  }}) %>
 
                                     </div>
                                     <div id="completedReservations" class="tab-pane">
-                                      <h3>Here are your past reservations</h3>
+                                      <h3>Here are your past reservations</h3><br><br>
+                                      <%
+                                      var currentTime = new Date();
+                                      booking.forEach((reservation) => {
+                                        if(reservation.end < currentTime){
 
+
+                                           %>
+                                      <h4>You have booked <%= reservation.petcaretaker.name %>:</h4>
+                                      <p>From: <%= reservation.start %> &nbsp;&nbsp;&nbsp; To: <%= reservation.end %></p>
+                                      <p>For : <%= reservation.hours * reservation.petcaretaker.price * reservation.numberofdays %> €</p>
+                                      <button class="btn btn-success">Write a review</button><br>
+                                      <hr>
+                                      <br>
+                                      <%  }}) %>
                                     </div>
 
                                   </div>
