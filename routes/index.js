@@ -9,9 +9,9 @@ const Pet           = require("../models/pet");
 
 
 
-router.get('/users/book', auth.checkLoggedIn('You must be login', '/login'), function(req, res, next) {
-  res.render('booking/booktaker');
-});
+// router.get('/users/book', auth.checkLoggedIn('You must be login', '/login'), function(req, res, next) {
+//   res.render('booking/booktaker');
+// });
 
 
 //route to show a list of users on the search page

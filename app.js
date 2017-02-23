@@ -20,6 +20,7 @@ mongoose.connect(`mongodb://localhost:${portDB}/${databaseName}`);
 var index = require('./routes/index');
 var authController = require('./routes/authController');
 var profile = require('./routes/profile');
+var bookings = require('./routes/bookings');
 
 var app = express();
 
@@ -57,7 +58,7 @@ auth.passport(passport);
 app.use('/', authController);
 app.use('/', index);
 app.use('/', profile);
-
+app.use('/', bookings);
 
 
 

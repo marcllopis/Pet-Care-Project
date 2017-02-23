@@ -2,9 +2,15 @@ const mongoose = require("mongoose");
 const Schema   = mongoose.Schema;
 
 const requestSchema = new Schema({
-  	status: Boolean, //this means if the request is accepted or denied
-    amountPayed: Number
-    //we may need to add more stuff here
+    start: Date,
+    end:   Date,
+    starttime: String,
+    endtime: String,
+    hours: Number,
+    numberofdays: Number,
+    comment: String,
+    owner: { type: Schema.Types.ObjectId, ref: 'User' },
+    petcaretaker: { type: Schema.Types.ObjectId, ref: 'User' }
   	}, {
   	timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
 	}

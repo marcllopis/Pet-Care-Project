@@ -5,6 +5,7 @@ var infowindow = new google.maps.InfoWindow();
       var map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: Number(loc.lat), lng: Number(loc.lng)},
         zoom: 14,
+        // scrollwheel: false,
         mapTypeId: 'roadmap'
 
       });

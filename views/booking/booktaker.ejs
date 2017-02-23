@@ -1,1 +1,25 @@
-<h2> You are about to book this taker</h2>
+<div class="container takers-container-custom">
+     <div class="row "><br>
+       <h2> You are about to book  <%= booking.petcaretaker.name %></h2>
+       <hr>
+       <h3><%= booking.owner.name %>, here all the details of your booking:</h3>
+       <div class="booking-info">
+         <h4>About  <%= booking.petcaretaker.name %>:</h4>
+         <hr>
+         <p><b>Who will take care of your pet:</b> <%= booking.petcaretaker.name %> </p>
+         <p><b>Address:</b> <%= booking.petcaretaker.address %></p>
+         <p><b>Phone number:</b> <%= booking.petcaretaker.phoneNumber %> </p>
+         <p><b>Email:</b> <%= booking.petcaretaker.email %></p>
+         <br><br>
+         <h4>About the booking:</h4>
+         <hr>
+         <p><b>Please, consider this while taking care of my pet:</b><%= booking.comment %></p>
+         <p><b>From:</b> <%= booking.start %></p>
+         <p><b>To:</b> <%= booking.end %></p>
+         <p><b>Hours per day:</b> <%= booking.hours %></p>
+         <p><b>Number of days:</b> <%= booking.numberofdays %></p>
+         <p><b>Total price:</b> € <%= booking.hours * booking.petcaretaker.price * booking.numberofdays %></p><br><br>
+         <button class="btn btn-info"><a href="/profile"></a>Go back to your profile</button>
+       </div>
+     </div>
+</div>
