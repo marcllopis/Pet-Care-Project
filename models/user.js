@@ -17,9 +17,9 @@ const userSchema = new Schema({
      },
     isPetTaker : { type: Boolean, default: false },
     //stuff needed for pet taker
-    
+
     pets: [{ type: Schema.Types.ObjectId, ref: 'Pet' }],
-    rating: Array,
+    rating: [{ type: Schema.Types.ObjectId, ref: 'Rating' }],
     description: String,
     price: Number,
     slogan: String,

@@ -14,31 +14,6 @@ router.get('/users/book', auth.checkLoggedIn('You must be login', '/login'), fun
 });
 
 
-router.get('/profile', auth.checkLoggedIn('You must be login', '/login'), (req, res, next) => {
-  // Pet
-  //   .findOne({owner: req.user._id})
-  //   .populate('owner')
-  //   .exec((err, pets) => {
-  //     if (err) {
-  //       next(err);
-  //       return;
-  //     }
-  // console.log(pets);
-    User
-      .findOne({_id: req.user._id})
-      .populate("pets")
-      .exec((err, user) => {
-        if (err) {
-          next(err);
-          return;
-        }
-        console.log(user);
-      });
-  res.render('dashboard/profile', { users: req.user });
-});
-
-
-
 //route to show a list of users on the search page
 router.get('/search/:format?', (req, res, next) => {
 
