@@ -3,9 +3,9 @@ var express = require('express');
 var router = express.Router();
 const bcrypt         = require("bcrypt");
 const bcryptSalt     = 10;
-
 var auth = require('../helpers/auth');
-const User = require("../models/user");
+const User           = require("../models/user");
+const Pet           = require("../models/pet");
 
 
 

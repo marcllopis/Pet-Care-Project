@@ -9,7 +9,8 @@ const petSchema = new Schema({
     age: String,
     gender: String,
     userRelated: String,
-    healthInfo: String
+    healthInfo: String,
+    owner: { type: Schema.Types.ObjectId, ref: 'User' }
 
 	}, {
   	timestamps: { createdAt: "created_at", updatedAt: "updated_at" }

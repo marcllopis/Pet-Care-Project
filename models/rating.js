@@ -2,12 +2,11 @@ const mongoose = require("mongoose");
 const Schema   = mongoose.Schema;
 
 const ratingSchema = new Schema({
-  	stars: String,
-    numberOfEvaluations: Number,
+  	stars: Number,
   	evaluation: String,
     date: Date,
-    userRelated: String, //This is the user who is writing the evaluation
-    userEvaluated: String //This is the user who receives the evaluation
+    user: { type: Schema.Types.ObjectId, ref: 'User' },
+    petcaretaker: { type: Schema.Types.ObjectId, ref: 'User' }
 	}, {
   	timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
 	}

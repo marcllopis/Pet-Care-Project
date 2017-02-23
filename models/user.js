@@ -18,12 +18,13 @@ const userSchema = new Schema({
     isPetTaker : { type: Boolean, default: false },
     //stuff needed for pet taker
 
-    pets: Array,
-    rating: Array,
+    pets: [{ type: Schema.Types.ObjectId, ref: 'Pet' }],
+    rating: [{ type: Schema.Types.ObjectId, ref: 'Rating' }],
     description: String,
     price: Number,
     slogan: String,
-    status: String
+    status: String,
+    reviews: Array
 	}, {
 
   	timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
