@@ -5,10 +5,10 @@ var auth = require('../helpers/auth');
 const Request           = require("../models/Request");
 const User           = require("../models/user");
 
-//
-// router.get('/users/book', auth.checkLoggedIn('You must be login', '/login'), function(req, res, next) {
-//   res.render('booking/booktaker');
-// });
+
+router.get('/users/book', auth.checkLoggedIn('You must be login', '/login'), function(req, res, next) {
+  res.render('booking/booktaker');
+});
 
   router.post('/booking', (req, res, next) => {
     var  start = req.body.datefrom;
@@ -24,8 +24,7 @@ const User           = require("../models/user");
     var endNumber = parseInt(end.slice(8,10));
     var hours = 24;
     var numberofdays = 1;
-      console.log(starttimeNumber);
-      console.log(endtimeNumber);
+
     if (starttimeNumber > endtimeNumber) {hours = starttimeNumber - endtimeNumber;}
     else if (starttimeNumber < endtimeNumber) {hours = endtimeNumber - starttimeNumber;}
     else if (starttimeNumber === endtimeNumber) {hours = hours;}
@@ -56,20 +55,34 @@ const User           = require("../models/user");
                   message: req.flash('error')
               });
           } else {
-            Request
-              .findOne({_id: booking._id})
-              .populate("owner")
-              .populate("petcaretaker")
-              .exec((err, booking) => {
-                if (err) {
-                  next(err);
-                  return;
-                }
-              res.render('booking/booktaker', {booking});
-              });
+            User.findByIdAndUpdate({_id: owner},{$push: { reservations: booking._id }}, (err) => {
+                    if (err) {
+                        console.log("GOT AN ERROR");
+                        next(err);
+                    } else {  User.findByIdAndUpdate({_id: petcaretaker},{$push: { reservations: booking._id }}, (err) => {
+                              if (err) {
+                                  console.log("GOT AN ERROR");
+                                  next(err);
+                              } else {Request
+                                .findOne({_id: booking._id})
+                                .populate("owner")
+                                .populate("petcaretaker")
+                                .exec((err, booking) => {
+                                  if (err) {
+                                    next(err);
+                                    return;
+                                  }
+                                res.render('booking/booktaker', {booking});
+                                });}
+                    });
+        }
+          });
 
-            }
+      }
           });
 
 })
+
+
+
 module.exports = router;

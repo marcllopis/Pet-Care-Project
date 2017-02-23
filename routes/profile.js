@@ -4,16 +4,19 @@ var router = express.Router();
 var auth = require('../helpers/auth');
 const Pet           = require("../models/pet");
 const User           = require("../models/user");
+const Request           = require("../models/Request");
 
 router.get('/profile', auth.checkLoggedIn('You must be login', '/login'), (req, res, next) => {
     User
       .findOne({_id: req.user._id})
       .populate("pets")
+      .populate("reservations")
       .exec((err, users) => {
         if (err) {
           next(err);
           return;
         }
+        console.log(users);
       res.render('dashboard/profile', {users});
       });
 });
