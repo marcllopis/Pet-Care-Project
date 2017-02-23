@@ -1,22 +1,152 @@
-<div class="login">
-  <div class="panel panel-default">
-    <div class="panel-heading">Login</div>
-    <div class="panel-body">
-      <form action="/login" method="POST">
-        <div class="form-group">
-          <label for="emailInput">Email</label>
-          <input type="email" class="form-control" id="email" placeholder="Email" name="email">
+
+
+
+
+
+<div class="container-fluid container-home-custom">
+
+
+<div class="jumbotron banner">
+      <div class="row">
+        <div class="col-md-5 title">
+        <h1>
+          Find amazing people that will take care <br>of your pet
+        </h1>
         </div>
-        <div class="form-group">
-          <label for="passwordInput">Password</label>
-          <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+      </div>
+      <div class="row">
+        <div class="col-md-12 center-form center-login">
+          <div class="login">
+            <div class="panel panel-default">
+              <div class="panel-heading form-login-text">Login</div>
+              <div class="panel-body">
+                <form action="/login" method="POST">
+                  <div class="form-group">
+                    <label for="emailInput form-login-text">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Email" name="email">
+                  </div>
+                  <div class="form-group">
+                    <label for="passwordInput form-login-text">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                  </div>
+                  <% if ( message != "" ) { %>
+                    <div class="alert alert-danger" role="alert"><%= message %></div>
+                  <% } %>
+                  <button type="submit" class="btn btn-success btn-block">Login</button>
+                </form>
+              </div>
+            </div>
+
+          </div>
         </div>
-        <% if ( message != "" ) { %>
-          <div class="alert alert-danger" role="alert"><%= message %></div>
-        <% } %>
-        <button type="submit" class="btn btn-primary btn-block">Login</button>
-      </form>
-    </div>
+      </div>
+
   </div>
+</div>
 
 </div>
+
+
+
+
+
+<div class="content-fluid back-grey">
+  <div class="row">
+    <div class="col-xs-2"></div>
+    <div class="col-xs-8">
+        <div class="row">
+          <div class="col-md-4">
+            <img class="img-responsive icon-custom" src="http://localhost:3000/images/paw.png" alt="">
+
+            <h3 class="text-center">Set up your profile</h3>
+            <hr>
+            <p class="text-justify">Sign up on our platform and set up your profile. Include all the information about you and everything you know about your pets! People that will take care of you pets will appreciate every detail you give them.</p>
+          </div>
+          <div class="col-md-4">
+            <img class="img-responsive icon-custom" src="http://localhost:3000/images/map.png" alt="">
+            <h3 class="text-center" >Find people around you</h3>
+            <hr>
+              <p class="text-justify">Check who is around your location in our map. The map will show you users that fits your search criteria and dates. You could also check the reviews that other users gave them. Don't worry, you will find your perfect company for your buddy!</p>
+          </div>
+          <div class="col-md-4">
+            <img class="img-responsive icon-custom" src="http://localhost:3000/images/taker.png" alt="">
+
+            <h3 class="text-center">Book the service you need</h3>
+            <hr>
+            <p class="text-justify">Once you find your perfect match for your pets, you are one click away from booking him! Set the date and the hours and let him know all the details about the booking. He will receive your message and after it's done, you can rate how it was!</p>
+          </div>
+        </div>
+    </div>
+    <div class="col-xs-2"></div>
+  </div>
+</div>
+
+<div class="container">
+        <div class="row">
+          <div class="col-md-12 marg-custom">
+            <h4>LATEST USER REVIEWS</h4>
+            <hr>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <img class="img-reponsive img-custom img-circle" src="http://localhost:3000/images/user1home.jpg" alt=""><br>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam nesciunt id dolorum ullam, facilis reprehenderit tenetur quia obcaecati laudantium impedit dicta quo illo perspiciatis dolores, eaque, quam ut vero maxime.
+          </div>
+          <div class="col-md-3">
+            <img class="img-reponsive img-custom img-circle" src="http://localhost:3000/images/user2home.jpg" alt=""><br>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores in ipsum dicta vel iure dolorum ea molestiae, quo tempora totam ullam assumenda, culpa repellat. Placeat numquam ipsa sed doloribus in.
+          </div>
+          <div class="col-md-3">
+            <img class="img-reponsive img-custom img-circle" src="http://localhost:3000/images/user3home.jpg" alt=""><br>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur veritatis quasi iure itaque, odio blanditiis a unde deserunt ullam quidem culpa ratione dolore omnis error enim quis beatae alias soluta.
+          </div>
+          <div class="col-md-3">
+            <img class="img-reponsive img-custom img-circle" src="http://localhost:3000/images/user4home.jpg" alt=""><br>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit amet pariatur quos nobis provident mollitia reiciendis, reprehenderit earum blanditiis, veritatis, laboriosam deleniti quae odit ab iste! Nesciunt similique nostrum nemo.
+          </div>
+        </div>
+      </div>
+<br><br>
+      <div class="content-fluid back-black">
+        <div class="row">
+          <div class="col-xs-2"></div>
+          <div class="col-xs-8">
+              <div class="row">
+                <div class="col-md-3">
+
+                  <h6>RECENT POST</h6>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi vel, assumenda rerum voluptatem esse tenetur placeat aliquam iusto nihil ratione praesentium libero est vitae qui. Laborum repellat laudantium impedit repudiandae.
+                </div>
+                <div class="col-md-3">
+
+                  <h6>REVERA</h6>
+                  Lorem ipsum
+                  <hr>
+                  Lorem ipsum dolor
+                  <hr>
+                  Lorem ipsum
+                  <hr>
+                  Lorem ipsum dolor
+                  <hr>
+                </div>
+                <div class="col-md-3">
+
+                  <h6>META</h6>
+                  Lorem ipsum
+                  <hr>
+                </div>
+                <div class="col-md-3">
+
+                  <h6>ARCHIVES</h6>
+                  Lorem ipsum
+                  <hr>
+                  Lorem ipsum dolor
+                  <hr>
+                  Lorem ipsum
+                  <hr>
+                  Lorem ipsum dolor
+                  <hr>
+                </div>
+
+              </div>
+          </div>
+          <div class="col-xs-2"></div>
+        </div>
+      </div>

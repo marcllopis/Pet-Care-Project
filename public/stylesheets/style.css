@@ -85,6 +85,9 @@ button a {
 }
 
 .scrolling-custom{
+  height: 100vh;
+  overflow:auto;
+
 
 }
 
@@ -145,7 +148,7 @@ button a {
 }
 
 .input-lg-custom{
-  width: 400px !important;
+  width: 320px !important;
 }
 
 .back-grey{
@@ -175,7 +178,7 @@ padding-top: 2%;
 }
 
 .map-view{
-  height: 80vh;
+  height: 92vh;
   background-color: white;
 }
 
@@ -201,13 +204,41 @@ padding-top: 2%;
   height: auto;
 }
 
+.banner-login {
+    background-image: url("http://localhost:3000/images/bghome.jpg");
+    margin-bottom: 0;
+    height: 90vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.center-login {
+  margin-left: 0px;
+  margin-top: 10px;
+}
+
+.form-login-text{
+  color: #fff !important;
+  text-shadow: 0 1px 3px #0f0f0f !important;
+}
+
+.signup-correct{
+  margin-left: 0px;
+}
+
+.nopadleft{
+  padding-left: 0px;
+}
+
+
 /*/////////////////////////////////////////////////////////*/
 /*/////////////////////////////////////////////////////////*/
 #floating-panel {
 
       z-index: 5;
       background-color: #fff;
-      padding: 5px;
+      padding: 0px;
       line-height: 30px;
-      padding-left: 10%;
     }

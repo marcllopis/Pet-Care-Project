@@ -1,31 +1,5 @@
-<div class="container-fluid">
-<div class="row">
+<div class="container-fluid nopadleft">
 <br><br><br>
-<!-- MAP SEARCH START -->
-<div class="col-md-12">
-
-  <div id="floating-panel" class="form-inline">
-
-    <input id="pac-input" name="name" class="form-control searchTextField input-lg-custom" type="text" placeholder="Where do you want to search?">
-&nbsp;&nbsp;&nbsp;
-    <label for="latInput">from: </label>
-    <input id="from" type="date" class="form-control" placeholder="from" name="from">&nbsp;&nbsp;&nbsp;
-    <label for="latInput">to: </label>
-    <input id="to" type="date" class="form-control" placeholder="to" name="to">
-    <input id="lat" type="hidden" class="form-control" placeholder="Full address" name="lat">
-
-    <input id="long" type="hidden" class="form-control" placeholder="Full address" name="long">
-
-&nbsp;&nbsp;&nbsp;
-    <button id="goSearch" class="btn btn-success"><a href="/search">Check the map!</a></button>
-<br>
-  </div>
-
-</div>
-<br><br>
-
-
-</div>
 
 <div class="row"></div>
 <br>
@@ -42,7 +16,23 @@
   <!-- USERS START -->
 
   <div class="col-md-7 scrolling-custom">
+    <div id="floating-panel" class="form-inline">
 
+      <input id="pac-input" name="name" class="form-control searchTextField input-lg-custom" type="text" placeholder="Where do you want to search?">
+  &nbsp;&nbsp;&nbsp;
+      <label for="latInput">from: </label>
+      <input id="from" type="date" class="form-control" placeholder="from" name="from">&nbsp;&nbsp;&nbsp;
+      <label for="latInput">to: </label>
+      <input id="to" type="date" class="form-control" placeholder="to" name="to">
+      <input id="lat" type="hidden" class="form-control" placeholder="Full address" name="lat">
+
+      <input id="long" type="hidden" class="form-control" placeholder="Full address" name="long">
+
+  &nbsp;&nbsp;&nbsp;
+      <button id="goSearch" class="btn btn-success"><a href="/search">Check the map!</a></button>
+  <br>
+  <hr>
+    </div>
     <h2> We have found <%= takers.length %> pet takers around you</h2>
 <br>
 
