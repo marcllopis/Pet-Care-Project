@@ -223,7 +223,7 @@
                                       <h4>You have booked <%= reservation.petcaretaker.name %>:</h4>
                                       <p>From: <%= reservation.start %>&nbsp;&nbsp;&nbsp; To: <%= reservation.end %></p>
                                       <p>For : <%= reservation.hours * reservation.petcaretaker.price * reservation.numberofdays %> €</p>
-                                      <button class="btn btn-success">View Details</button><br>
+                                      <button class="btn btn-success"><a href="/booking/<%= reservation._id %>">View Details</a></button><br>
                                       <hr>
                                       <br>
                                       <%  }}) %>
@@ -237,8 +237,9 @@
                                         if(reservation.end < currentTime){
 
 
+
                                            %>
-                                      <h4>You have booked <%= reservation.petcaretaker.name %>:</h4>
+                                      <h4>You booked <%= reservation.petcaretaker.name %>:</h4>
                                       <p>From: <%= reservation.start %> &nbsp;&nbsp;&nbsp; To: <%= reservation.end %></p>
                                       <p>For : <%= reservation.hours * reservation.petcaretaker.price * reservation.numberofdays %> €</p>
                                       <button class="btn btn-success">Write a review</button><br>
@@ -265,6 +266,8 @@
                     <input type="hidden" name="profilePicture" value=<%= users.profilePicture %>>
                     <input type="hidden" name="phoneNumber" value=<%= users.phoneNumber %>>
                     <input type="hidden" name="description" value=<%= users.description %>>
+                    <input type="hidden" name="price" value="0">
+
 
 
                     <select class="form-control" name="role" id="roles">
@@ -304,7 +307,7 @@
                    <li role="presentation"><a href="#edit" aria-controls="edit" role="tab" data-toggle="tab">Edit your profile</a></li>
                    <li role="presentation"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">View your reviews</a></li>
                    <li role="presentation"><a href="#reservations" aria-controls="reservations" role="tab" data-toggle="tab">Reservations</a></li>
-                   <li role="presentation"><a href="#status" aria-controls="status" role="tab" data-toggle="tab">Status</a></li>
+                   <li role="presentation"><a href="#test" aria-controls="test" role="tab" data-toggle="tab">Status</a></li>
 
                  </ul>
 
@@ -317,7 +320,11 @@
                        <h4>Surname: <%= users.surname %></h4>
                        <h4>Phone number: <%= users.phoneNumber %></h4>
                        <h4>Profile pic name: <%= users.profilePicture %></h4>
-                       <h4>About you: </h4><p><%= users.description %></p>
+                       <h4>Your slogan: <%= users.slogan %></h4>
+                       <h4>Price per hour: <%= users.price %></h4>
+                       <h4>Status: <%= users.status %></h4>
+                       <h4>About you: <%= users.description %></h4>
+
 
                      </div>
                    </div>
@@ -344,16 +351,29 @@
                          <h4>Add some extra information:</h4>
                          <div class="form-group">
                            <label for="phoneInput">Phone number</label>
-                           <input type="text" class="form-control" id="name" placeholder="<%=users.phoneNumber%>" value="<%=users.phoneNumber%>" name="phoneNumber">
+                           <input type="text" class="form-control" id="phone" placeholder="<%=users.phoneNumber%>" value="<%=users.phoneNumber%>" name="phoneNumber">
                          </div>
                          <div class="form-group">
                            <label for="pictureInput">Profile picture</label>
-                           <input type="text" class="form-control" id="name" placeholder="<%=users.profilePicture%>" value="<%=users.profilePicture%>" name="profilePicture">
+                           <input type="text" class="form-control" id="picture" placeholder="<%=users.profilePicture%>" value="<%=users.profilePicture%>" name="profilePicture">
+                         </div>
+                         <div class="form-group">
+                           <label for="sloganInput">Your slogan</label>
+                           <input class="form-control" id="slogan" placeholder="<%=users.slogan%>" value="<%=users.slogan%>" name="slogan">
+                         </div>
+                         <div class="form-group">
+                           <label for="priceInput">Price per hour</label>
+                           <input class="form-control" id="price" placeholder="<%=users.price%>" value="<%=users.price%>" name="price">
+                         </div>
+                         <div class="form-group">
+                           <label for="aboutInput">Status</label>
+                           <input class="form-control" id="status" placeholder="<%=users.status%>" value="<%=users.status%>" name="status">
                          </div>
                          <div class="form-group">
                            <label for="aboutInput">About you</label>
                            <input class="form-control textarea-custom" id="surname" placeholder="<%=users.description%>" value="<%=users.description%>" name="description">
                          </div>
+
                          <hr>
 
                          <button type="submit" class="btn btn-primary btn-block">Update your profile</button>
@@ -385,24 +405,50 @@
 
                                <div class="tab-content">
                                  <div id="pendingReservation" class="tab-pane active">
-                                   <h3>Here are the reservations you have right now</h3>
+                                   <h3>Here are the reservations you have been booked for</h3>
+                                   <%
+                                   var currentTime = new Date();
+                                   booking.forEach((reservation) => {
 
+                                   %>
+                                   <h4>You have been booked by <%= reservation.owner.name %>:</h4>
+                                   <p>From: <%= reservation.start %>&nbsp;&nbsp;&nbsp; To: <%= reservation.end %></p>
+                                   <p>You will receive : <%= reservation.hours * reservation.petcaretaker.price * reservation.numberofdays %> €</p>
+                                   <button class="btn btn-success"><a href="/booking/<%= reservation._id %>">Check Details</a></button><br>
+                                   <hr>
+                                   <br>
+                                   <%  }) %>
                                  </div>
                                  <div id="completedReservations" class="tab-pane">
                                    <h3>Here are your past reservations</h3>
+                                   <%
+                                   var currentTime = new Date();
+                                   booking.forEach((reservation) => {
+                                     if(reservation.end < currentTime){
 
+
+
+                                        %>
+                                   <h4>You were booked by <%= reservation.owner.name %>:</h4>
+                                   <p>From: <%= reservation.start %> &nbsp;&nbsp;&nbsp; To: <%= reservation.end %></p>
+                                   <p>For : <%= reservation.hours * reservation.petcaretaker.price * reservation.numberofdays %> €</p>
+                                   <button class="btn btn-success">Write a review</button><br>
+                                   <hr>
+                                   <br>
+                                   <%  }}) %>
                                  </div>
 
                                </div>
 
                        </div>
                    </div>
-                   <div role="tabpanel" class="tab-pane" id="status">
+
+                   <div role="tabpanel" class="tab-pane" id="test">
+
                      <h3>Change your status</h3>
                      <div class="col-md-8">
                        <div class="panel-body">
                          <form action="/profile" method="POST">
-                           <h4>Change your status:</h4>
                            <div class="form-group">
                              <input type="hidden" name="userId" value=<%= users._id %>>
                              <input type="hidden" name="name" value=<%= users.name %>>
@@ -410,6 +456,8 @@
                              <input type="hidden" name="profilePicture" value=<%= users.profilePicture %>>
                              <input type="hidden" name="phoneNumber" value=<%= users.phoneNumber %>>
                              <input type="hidden" name="description" value=<%= users.description %>>
+                             <input type="hidden" name="price" value="0">
+
 
 
                              <select class="form-control" name="role" id="roles">

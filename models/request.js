@@ -9,6 +9,7 @@ const requestSchema = new Schema({
     hours: Number,
     numberofdays: Number,
     comment: String,
+    service: String,
     owner: { type: Schema.Types.ObjectId, ref: 'User' },
     petcaretaker: { type: Schema.Types.ObjectId, ref: 'User' }
   	}, {
