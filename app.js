@@ -14,7 +14,7 @@ const flash = require("connect-flash");
 
 
 const mongoose = require("mongoose");
-mongoose.connect(`mongodb://localhost:${portDB}/${databaseName}`);
+mongoose.connect(`mongodb://heroku_lcls0m24:5drsvshmshr31kmgqah1p72obf@ds157839.mlab.com:57839/heroku_lcls0m24`);
 
 // routes
 var index = require('./routes/index');
