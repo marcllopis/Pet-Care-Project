@@ -1,4 +1,6 @@
 var express = require('express');
+const passport       = require("passport");
+
 // const ensureLogin = require("connect-ensure-login");
 var router = express.Router();
 const bcrypt         = require("bcrypt");

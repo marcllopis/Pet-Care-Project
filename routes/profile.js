@@ -1,5 +1,7 @@
 var express           = require('express');
 var mongoose          = require('mongoose');
+const passport       = require("passport");
+
 var router            = express.Router();
 var auth              = require('../helpers/auth');
 const Pet             = require("../models/pet");
@@ -28,6 +30,16 @@ router.get('/profile', auth.checkLoggedIn('You must be login', '/login'), (req, 
               return;
             }
 
+            Request
+            .find({petcaretaker: req.user._id})
+            .populate("petcaretaker")
+            .populate("owner")
+            .exec((err, bookingtaker) => {
+              if (err) {
+                next(err);
+                return;
+              }
+
             Rating
             .find({owner: req.user._id})
             .populate("owner")
@@ -37,9 +49,22 @@ router.get('/profile', auth.checkLoggedIn('You must be login', '/login'), (req, 
                 next(err);
                 return;
               }
-              console.log(review);
-            res.render('dashboard/profile', {users, booking,review});
 
+              Rating
+              .find({petcaretaker: req.user._id})
+              .populate("owner")
+              .populate("petcaretaker")
+              .exec((err, reviewcaretaker) => {
+                if (err) {
+                  next(err);
+                  return;
+                }
+              console.log(booking);
+              console.log(review);
+            res.render('dashboard/profile', {users, booking,review,bookingtaker,reviewcaretaker});
+
+          });
+      });
           });
       });
     });

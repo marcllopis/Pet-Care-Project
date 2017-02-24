@@ -406,7 +406,25 @@
                    </div>
                    <div role="tabpanel" class="tab-pane" id="reviews">
 
-                    <h3>Here are the reviews users wrote about you</h3>
+
+                                   <h3>Reviews</h3>
+
+                                     <div class="panel-body">
+                                                   <h3>Here are the reviews you have right now</h3><br><br>
+                                                   <%
+                                                   reviewcaretaker.forEach((review) => {
+                                                     if(users.role === "PETTAKER"){
+
+                                                   %>
+                                                   <h4>You have been reviewed by <%= review.owner.name %>:</h4>
+                                                   <p>On: <%= review.created_at %></p>
+                                                   <p>Rating : <%= review.stars%></p>
+                                                   <p>Comments : <%= review.evaluation%></p>
+                                                   <hr>
+                                                   <br>
+                                                   <%  }}) %>
+
+                                                 </div>
 
                    </div>
                    <div role="tabpanel" class="tab-pane" id="reservations">
@@ -432,7 +450,7 @@
                                    <h3>Here are the reservations you have been booked for</h3>
                                    <%
                                    var currentTime = new Date();
-                                   booking.forEach((reservation) => {
+                                   bookingtaker.forEach((reservation) => {
 
                                    %>
                                    <h4>You have been booked by <%= reservation.owner.name %>:</h4>

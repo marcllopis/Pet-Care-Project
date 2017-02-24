@@ -42,7 +42,15 @@
         <%
         takers.forEach((taker) => {
         if(taker.role === "PETTAKER"){
-           %>
+
+            var sum = 0;
+            taker.score.forEach((score) => {
+
+                 sum += score;
+                   }) %>
+                   <%  if(taker.score.length === 0){
+                        taker.score.length = 1;
+                                   }%>
         <div class="div col-xs-6">
           <div class="row">
             <div class="col-md-4">
@@ -51,7 +59,9 @@
             <div class="col-md-8">
               <h3><%= taker.name %><span style="float:right"><%= taker.price %>€ /hour</span></h3>
               <h4><%= taker.slogan %></h4>
-              <h5>Average of 4,5 in 26 evaluations</h5>
+              <h5>Average of <%=sum/taker.score.length %> stars in                    <%  if(taker.score.length === 1){
+                                      taker.score.length = 0;
+                                                 }%><%= taker.score.length %> evaluations</h5>
             </div>
           </div>
           <div class="row">
