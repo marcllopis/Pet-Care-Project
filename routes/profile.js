@@ -33,7 +33,7 @@ router.get('/profile', auth.checkLoggedIn('You must be login', '/login'), (req, 
             console.log("----------");
             console.log(booking);
             res.render('dashboard/profile', {users, booking});
-      });
+
 
 
             Rating
@@ -47,10 +47,11 @@ router.get('/profile', auth.checkLoggedIn('You must be login', '/login'), (req, 
               }
               console.log(review);
             res.render('dashboard/profile', {users, booking,review});
+
+          });
       });
     });
-  })
-});
+  });
 
 
   router.post('/profilepet', (req, res, next) => {
@@ -88,7 +89,6 @@ router.get('/profile', auth.checkLoggedIn('You must be login', '/login'), (req, 
           }
       });
   });
-
 
 
 module.exports = router;
