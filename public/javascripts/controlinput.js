@@ -1,18 +1,13 @@
 function init() {
-
-var input = $('.searchTextField');
-var autocomplete = new google.maps.places.Autocomplete(input);
-
+  // var input = $('.searchInputField');
+  var input = document.getElementById("pac-input");
+  var autocomplete = new google.maps.places.Autocomplete(input);
 }
 
 
 
 $('.searchTextField').change(function() {
-
-
-setTimeout(getCoordinates,1000);
-
-
+  setTimeout(getCoordinates,1000);
 });
 
 

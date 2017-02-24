@@ -216,7 +216,6 @@
                                   <div class="tab-content">
                                     <div id="pendingReservation" class="tab-pane active">
 
-                                      <h3>Here are the pending reservations</h3><br><br>
                                       <%
                                       var currentTime = new Date();
                                       booking.forEach((reservation) => {
@@ -235,7 +234,6 @@
                                     </div>
                                     <div id="acceptedReservations" class="tab-pane">
 
-                                      <h3>Here are the reservations that are accepted</h3><br><br>
                                       <%
                                       var currentTime = new Date();
                                       booking.forEach((reservation) => {
@@ -253,7 +251,6 @@
 
                                     </div>
                                     <div id="completedReservations" class="tab-pane">
-                                      <h3>Here are your past reservations</h3><br><br>
                                       <%
                                       var currentTime = new Date();
                                       booking.forEach((reservation) => {
@@ -430,10 +427,8 @@
                    </div>
                    <div role="tabpanel" class="tab-pane" id="reviews">
 
-                                   <h3>Reviews</h3>
 
                                      <div class="panel-body">
-                                                   <h3>Here are the reviews you have right now</h3><br><br>
                                                    <%
                                                    reviewcaretaker.forEach((review) => {
                                                      if(users.role === "PETTAKER"){
@@ -473,7 +468,6 @@
 
                                <div class="tab-content">
                                  <div id="pendingReservation" class="tab-pane active">
-                                   <h3>Here are the reservations you have been booked for</h3>
                                    <%
                                    var currentTime = new Date();
                                    bookingtaker.forEach((reservation) => {
@@ -500,7 +494,6 @@
                                    <%  }}) %>
                                  </div>
                                  <div id="acceptedReservations" class="tab-pane">
-                                   <h3>Here are the reservations you have been booked for</h3>
                                    <%
                                    var currentTime = new Date();
                                    bookingtaker.forEach((reservation) => {
@@ -524,7 +517,6 @@
                                    <%  }}) %>
                                  </div>
                                  <div id="completedReservations" class="tab-pane">
-                                   <h3>Here are your past reservations</h3>
                                    <%
                                    var currentTime = new Date();
                                    booking.forEach((reservation) => {

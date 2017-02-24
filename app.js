@@ -14,7 +14,7 @@ const flash = require("connect-flash");
 
 
 const mongoose = require("mongoose");
-mongoose.connect(`mongodb://heroku_lcls0m24:5drsvshmshr31kmgqah1p72obf@ds157839.mlab.com:57839/heroku_lcls0m24`);
+mongoose.connect("mongodb://localhost:27017/petcare");
 
 // routes
 var index = require('./routes/index');

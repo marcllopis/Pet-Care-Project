@@ -18,7 +18,7 @@
   <div class="col-md-7 scrolling-custom">
     <div id="floating-panel" class="form-inline">
 
-      <input id="pac-input" name="name" class="form-control searchTextField input-lg-custom" type="text" placeholder="Where do you want to search?">
+      <input id="pac-input" name="name" class="form-control searchInputField input-lg-custom" type="text" placeholder="Where do you want to search?">
   &nbsp;&nbsp;&nbsp;
       <label for="latInput">from: </label>
       <input id="from" type="date" class="form-control" placeholder="from" name="from">&nbsp;&nbsp;&nbsp;
@@ -42,15 +42,7 @@
         <%
         takers.forEach((taker) => {
         if(taker.role === "PETTAKER"){
-
-            var sum = 0;
-            taker.score.forEach((score) => {
-
-                 sum += score;
-                   }) %>
-                   <%  if(taker.score.length === 0){
-                        taker.score.length = 1;
-                                   }%>
+           %>
         <div class="div col-xs-6">
           <div class="row">
             <div class="col-md-4">
@@ -59,9 +51,7 @@
             <div class="col-md-8">
               <h3><%= taker.name %><span style="float:right"><%= taker.price %>€ /hour</span></h3>
               <h4><%= taker.slogan %></h4>
-              <h5>Average of <%=sum/taker.score.length %> stars in                    <%  if(taker.score.length === 1){
-                                      taker.score.length = 0;
-                                                 }%><%= taker.score.length %> evaluations</h5>
+              <h5>Average of 4,5 in 26 evaluations</h5>
             </div>
           </div>
           <div class="row">

@@ -1,5 +1,7 @@
+
+
 function initAutocomplete() {
-var infowindow = new google.maps.InfoWindow();
+  var infowindow = new google.maps.InfoWindow();
 
      var map = new google.maps.Map(document.getElementById('map'), {
        center: {lat: Number(loc.lat), lng: Number(loc.lng)},
@@ -21,7 +23,7 @@ var infowindow = new google.maps.InfoWindow();
 
      map.addListener('dragend', function() {
        console.log("test");
-     window.location.href = "https://petcaretaker.herokuapp.com/search?lat=" + map.center.lat() + "&long=" + map.center.lng();
+     window.location.href = "http://localhost:3000/search?lat=" + map.center.lat() + "&long=" + map.center.lng();
 
      })
 
@@ -35,7 +37,7 @@ var infowindow = new google.maps.InfoWindow();
      }
 
      $.ajax({
-       url: "https://petcaretaker.herokuapp.com/search/json",
+       url: "http://localhost:3000/search/json",
        data: location,
        type: "get",
        success: function(response){
