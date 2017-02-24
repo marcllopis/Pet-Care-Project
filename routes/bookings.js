@@ -1,11 +1,13 @@
 var express          = require('express');
 var mongoose          = require('mongoose');
-const passport       = require("passport");
+
 
 
 
 var router = express.Router();
 var auth = require('../helpers/auth');
+const passport       = require("passport");
+
 const Request           = require("../models/request");
 const User           = require("../models/user");
 
@@ -23,6 +25,7 @@ router.get('/users/book', auth.checkLoggedIn('You must be login', '/login'), fun
     var  comment = req.body.comment;
     var  service = req.body.service;
     var  owner = req.user._id;
+    var pet = req.user.pets
     var petcaretaker = req.body.takerid;
     var starttimeNumber = parseInt(starttime);
     var endtimeNumber = parseInt(endtime);
@@ -30,7 +33,10 @@ router.get('/users/book', auth.checkLoggedIn('You must be login', '/login'), fun
     var endNumber = parseInt(end.slice(8,10));
     var hours = 24;
     var numberofdays = 1;
-    console.log(service);
+
+
+
+
     if (starttimeNumber < endtimeNumber) {hours = endtimeNumber - starttimeNumber;}
     else if (starttimeNumber === endtimeNumber) {hours = hours;}
 
@@ -50,7 +56,8 @@ router.get('/users/book', auth.checkLoggedIn('You must be login', '/login'), fun
         comment,
         service,
         owner,
-        petcaretaker
+        petcaretaker,
+        pet
       });
 console.log(newRequest);
       newRequest.save((err, booking) => {
@@ -68,10 +75,12 @@ console.log(newRequest);
                               if (err) {
                                   console.log("GOT AN ERROR");
                                   next(err);
-                              } else {Request
+                              } else {
+                                Request
                                 .findOne({_id: booking._id})
                                 .populate("owner")
                                 .populate("petcaretaker")
+                                .populate("pet")
                                 .exec((err, booking) => {
                                   if (err) {
                                     next(err);
@@ -95,10 +104,21 @@ router.get('/booking/:bookingId', auth.checkLoggedIn('You must be login', '/logi
   Request.findById(bookingId, (err, booking) => {
     if (err) {  next(err); }
     console.log("HERE IS THE BOOKING");
+    User
+   .findOne({_id: req.user._id})
+   .populate("pets")
+   .populate("reservations")
+   .exec((err, users) => {
+     if (err) {
+       next(err);
+       return;
+       }
 
     Request
       .findOne({_id: bookingId})
+      .populate("owner")
       .populate("petcaretaker")
+      .populate("pet")
       .exec((err, booking) => {
         if (err) {
           next(err);
@@ -106,10 +126,38 @@ router.get('/booking/:bookingId', auth.checkLoggedIn('You must be login', '/logi
         }
         console.log(booking);
         console.log(bookingId);
-    res.render('booking/bookinginfo', { booking: booking });
+    res.render('booking/bookinginfo', { users, booking });
   });
+    });
   });
 });
+
+
+
+router.post('/bookingconfirm/:bookingId', (req, res, next) => {
+
+  let bookingId = req.params.bookingId;
+  console.log("testeeeeee");
+  console.log(bookingId);
+  console.log("testeeeeee");
+
+  let bookingToUpdate = {
+    accepted: req.body.confirm
+
+  }
+
+  Request.findByIdAndUpdate(bookingId, bookingToUpdate, (err, booking)=>{
+    if (err) {
+      console.log("GOT AN ERROR");
+      next(err)
+    } else {
+      console.log(booking);
+      console.log("GOT UPDATED");
+      res.redirect('/profile');
+    }
+  })
+});
+
 
 
 module.exports = router;

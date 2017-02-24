@@ -9,6 +9,7 @@ const User            = require("../models/user");
 const Request         = require("../models/request");
 const Rating          =  require("../models/rating");
 
+
 router.get('/profile', auth.checkLoggedIn('You must be login', '/login'), (req, res, next) => {
        User
       .findOne({_id: req.user._id})
@@ -34,6 +35,7 @@ router.get('/profile', auth.checkLoggedIn('You must be login', '/login'), (req, 
             .find({petcaretaker: req.user._id})
             .populate("petcaretaker")
             .populate("owner")
+            .populate("pet")
             .exec((err, bookingtaker) => {
               if (err) {
                 next(err);
@@ -59,7 +61,7 @@ router.get('/profile', auth.checkLoggedIn('You must be login', '/login'), (req, 
                   next(err);
                   return;
                 }
-              console.log(booking);
+              console.log(bookingtaker);
               console.log(review);
             res.render('dashboard/profile', {users, booking,review,bookingtaker,reviewcaretaker});
 

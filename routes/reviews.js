@@ -8,6 +8,8 @@ const Request         = require("../models/request");
 const User            = require("../models/user");
 const Rating          =  require("../models/rating");
 
+
+
 router.get('/reviews/:requestId', auth.checkLoggedIn('You must be login', '/login'), (req, res, next) => {
   let requestId = req.params.requestId;
   Request.findById(requestId, (err, booking) => {
@@ -99,6 +101,7 @@ router.get('/reviews/:requestId', auth.checkLoggedIn('You must be login', '/logi
           });
 
 });
+
 
 
 module.exports = router;

@@ -1,4 +1,9 @@
+
 <br><br><br><br><br>
+<%
+if(users.role === "OWNER"){
+   %>
+
 <div class="container takers-container-custom">
      <div class="row "><br>
        <h2> You booked  <%= booking.petcaretaker.name %></h2>
@@ -9,9 +14,7 @@
          <p><b>Who will take care of your pet:</b> <%= booking.petcaretaker.name %> </p>
          <p><b>Address:</b> <%= booking.petcaretaker.address %></p>
          <p><b>Phone number:</b> <%= booking.petcaretaker.phoneNumber %> </p>
-         <p><b>Email:</b> <%= booking.petcaretaker.email %></p>
-         <p><b><a href="mailto:"<%= booking.petcaretaker.email %>"">Contact him via email</b> </a></p>
-
+         <p><b>Email:</b> <%= booking.petcaretaker.email %> | <a href="mailto:"<%= booking.petcaretaker.email %>"">Contact</a></p>
          <br><br>
          <h4>About the booking:</h4>
          <hr>
@@ -25,3 +28,39 @@
        </div>
      </div>
 </div>
+ <%  } %>
+
+<%
+if(users.role === "PETTAKER"){
+   %>
+<div class="container takers-container-custom">
+     <div class="row "><br>
+       <h2> You are booked by <%= booking.owner.name %></h2>
+       <hr>
+       <div class="booking-info">
+         <h4>About  <%= booking.owner.name %>:</h4>
+         <hr>
+         <p><b>You will be taking care of:</b><br> <%
+booking.pet.forEach((pet) => {
+                   %>
+         Pet name: <%= pet.name %> <br>
+         Type of animal: <%= pet.typeOfAnimal %> <br>
+         Health information: <%= pet.healthInfo %> <br>
+       </p>
+<%  }) %></p>
+         <p><b>Address:</b> <%= booking.owner.address %></p>
+         <p><b>Phone number:</b> <%= booking.owner.phoneNumber %> </p>
+         <p><b>Email:</b> <%= booking.owner.email %> | <a href="mailto:"<%= booking.owner.email %>"">Contact</a></p>
+         <br><br>
+         <h4>About the booking:</h4>
+         <hr>
+         <p><b>From:</b> <%= booking.start %></p>
+         <p><b>To:</b> <%= booking.end %></p>
+         <p><b>Hours per day:</b> <%= booking.hours %></p>
+         <p><b>Number of days:</b> <%= booking.numberofdays %></p>
+         <p><b>Total price:</b> € <%= booking.hours * booking.petcaretaker.price * booking.numberofdays %></p><br><br>
+         <button class="btn btn-success"><a href="/profile" style="text-decoration:none; color:white;">Go back to your profile</a></button>
+       </div>
+     </div>
+</div>
+ <%  } %>

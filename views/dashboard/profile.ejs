@@ -201,6 +201,10 @@
                                   <ul class="nav nav-tabs">
                                     <li class="active"><a data-toggle="tab" href="#pendingReservation">Pending reservations</a>
                                     </li>
+
+                                      <li><a data-toggle="tab" href="#acceptedReservations">Accepted reservations</a>
+                                      </li>
+
                                     <li><a data-toggle="tab" href="#completedReservations">Completed reservations</a>
                                     </li>
                                   </ul>
@@ -212,17 +216,37 @@
                                   <div class="tab-content">
                                     <div id="pendingReservation" class="tab-pane active">
 
-                                      <h3>Here are the reservations you have right now</h3><br><br>
+                                      <h3>Here are the pending reservations</h3><br><br>
                                       <%
                                       var currentTime = new Date();
                                       booking.forEach((reservation) => {
-                                        if(reservation.end >= currentTime){
+                                        if(reservation.accepted === false){
 
                                       %>
                                       <h4>You have booked <%= reservation.petcaretaker.name %>:</h4>
                                       <p>From: <%= reservation.start %>&nbsp;&nbsp;&nbsp; To: <%= reservation.end %></p>
                                       <p>For : <%= reservation.hours * reservation.petcaretaker.price * reservation.numberofdays %> €</p>
-                                      <button class="btn btn-success"><a href="/booking/<%= reservation._id %>">View Details</a></button><br>
+                                      <button class="btn btn-success"><a href="/booking/<%= reservation._id %>">View Details</a></button>
+                                      <button class="btn btn-success"><a href="/users/<%= reservation.petcaretaker._id %>">Book again</a></button><br>
+                                      <hr>
+                                      <br>
+                                      <%  }}) %>
+
+                                    </div>
+                                    <div id="acceptedReservations" class="tab-pane">
+
+                                      <h3>Here are the reservations that are accepted</h3><br><br>
+                                      <%
+                                      var currentTime = new Date();
+                                      booking.forEach((reservation) => {
+                                        if(reservation.accepted === true){
+
+                                      %>
+                                      <h4>You have booked <%= reservation.petcaretaker.name %>:</h4>
+                                      <p>From: <%= reservation.start %>&nbsp;&nbsp;&nbsp; To: <%= reservation.end %></p>
+                                      <p>For : <%= reservation.hours * reservation.petcaretaker.price * reservation.numberofdays %> €</p>
+                                      <button class="btn btn-success"><a href="/booking/<%= reservation._id %>">View Details</a></button>
+                                      <button class="btn btn-success"><a href="/users/<%= reservation.petcaretaker._id %>">Book again</a></button><br>
                                       <hr>
                                       <br>
                                       <%  }}) %>
@@ -241,15 +265,14 @@
                                       <h4>You booked <%= reservation.petcaretaker.name %>:</h4>
                                       <p>From: <%= reservation.start %> &nbsp;&nbsp;&nbsp; To: <%= reservation.end %></p>
                                       <p>For : <%= reservation.hours * reservation.petcaretaker.price * reservation.numberofdays %> €</p>
-                                      <button class="btn btn-success"><a href="/reviews/<%= reservation._id %>">
-                              Write review</a></button><br>
+                                      <button class="btn btn-success"><a href="/booking/<%= reservation._id %>">View Details</a></button>
+                                      <button class="btn btn-success"><a href="/reviews/<%= reservation._id %>">Write review</a></button>
+                                      <button class="btn btn-success"><a href="/users/<%= reservation.petcaretaker._id %>">Book again</a></button><br>
                                       <hr>
                                       <br>
                                       <%  }}) %>
                                     </div>
-
                                   </div>
-
                           </div>
 
 
@@ -269,6 +292,7 @@
                                       <p>On: <%= review.created_at %></p>
                                       <p>Rating : <%= review.stars%></p>
                                       <p>Comments : <%= review.evaluation%></p>
+
                                       <hr>
                                       <br>
                                       <%  }}) %>
@@ -406,7 +430,6 @@
                    </div>
                    <div role="tabpanel" class="tab-pane" id="reviews">
 
-
                                    <h3>Reviews</h3>
 
                                      <div class="panel-body">
@@ -426,6 +449,7 @@
 
                                                  </div>
 
+
                    </div>
                    <div role="tabpanel" class="tab-pane" id="reservations">
                      <div class="panel-body">
@@ -436,6 +460,8 @@
 
                                <ul class="nav nav-tabs">
                                  <li class="active"><a data-toggle="tab" href="#pendingReservation">Pending reservations</a>
+                                 </li>
+                                 <li><a data-toggle="tab" href="#acceptedReservations">Accepted reservations</a>
                                  </li>
                                  <li><a data-toggle="tab" href="#completedReservations">Completed reservations</a>
                                  </li>
@@ -451,15 +477,51 @@
                                    <%
                                    var currentTime = new Date();
                                    bookingtaker.forEach((reservation) => {
+                                     if(reservation.accepted === false) {
 
                                    %>
                                    <h4>You have been booked by <%= reservation.owner.name %>:</h4>
                                    <p>From: <%= reservation.start %>&nbsp;&nbsp;&nbsp; To: <%= reservation.end %></p>
                                    <p>You will receive : <%= reservation.hours * reservation.petcaretaker.price * reservation.numberofdays %> €</p>
-                                   <button class="btn btn-success"><a href="/booking/<%= reservation._id %>">Check Details</a></button><br>
+                                              <%
+                                   reservation.pet.forEach((pet) => {
+                                                        %>
+                                              Pet name: <%= pet.name %> <br>
+                                              Type of animal: <%= pet.typeOfAnimal %> <br>
+                                            </p>
+                                  <%  }) %>
+
+                                   <button class="btn btn-success"><a href="/booking/<%= reservation._id %>">Check Details</a></button>
+                                   <form style="display:inline-block;" action="/bookingconfirm/<%= reservation._id %>" method="POST">
+                                   <input type="hidden" name="confirm" value="true">
+                                   <button type="submit" class="btn btn-success">Confirm</button><br></form>
                                    <hr>
                                    <br>
-                                   <%  }) %>
+                                   <%  }}) %>
+                                 </div>
+                                 <div id="acceptedReservations" class="tab-pane">
+                                   <h3>Here are the reservations you have been booked for</h3>
+                                   <%
+                                   var currentTime = new Date();
+                                   bookingtaker.forEach((reservation) => {
+                                     if(reservation.accepted === true) {
+
+                                   %>
+                                   <h4>You have been booked by <%= reservation.owner.name %>:</h4>
+                                   <p>From: <%= reservation.start %>&nbsp;&nbsp;&nbsp; To: <%= reservation.end %></p>
+                                   <p>You will receive : <%= reservation.hours * reservation.petcaretaker.price * reservation.numberofdays %> €</p>
+                                              <%
+                                   reservation.pet.forEach((pet) => {
+                                                        %>
+                                              Pet name: <%= pet.name %> <br>
+                                              Type of animal: <%= pet.typeOfAnimal %> <br>
+                                            </p>
+                                  <%  }) %>
+
+                                   <button class="btn btn-success"><a href="/booking/<%= reservation._id %>">Check Details</a></button>
+                                   <hr>
+                                   <br>
+                                   <%  }}) %>
                                  </div>
                                  <div id="completedReservations" class="tab-pane">
                                    <h3>Here are your past reservations</h3>
@@ -468,13 +530,18 @@
                                    booking.forEach((reservation) => {
                                      if(reservation.end < currentTime){
 
-
-
                                         %>
                                    <h4>You were booked by <%= reservation.owner.name %>:</h4>
                                    <p>From: <%= reservation.start %> &nbsp;&nbsp;&nbsp; To: <%= reservation.end %></p>
                                    <p>For : <%= reservation.hours * reservation.petcaretaker.price * reservation.numberofdays %> €</p>
-                                   <button class="btn btn-success">Write a review</button><br>
+                                   <%
+                                        reservation.pet.forEach((pet) => {
+                                             %>
+                                   Pet name: <%= pet.name %> <br>
+                                   Type of animal: <%= pet.typeOfAnimal %> <br>
+                                 </p>
+                                      <%  }) %>
+
                                    <hr>
                                    <br>
                                    <%  }}) %>
