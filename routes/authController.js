@@ -21,6 +21,10 @@ router.post('/profile', (req, res, next) => {
     profilePicture: req.body.profilePicture,
     phoneNumber: req.body.phoneNumber,
     description: req.body.description,
+    price: req.body.price,
+    slogan: req.body.slogan,
+    status: req.body.status,
+
     role: req.body.role
   }
 
