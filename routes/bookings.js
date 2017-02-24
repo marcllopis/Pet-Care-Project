@@ -16,6 +16,7 @@ router.get('/users/book', auth.checkLoggedIn('You must be login', '/login'), fun
     var  starttime = req.body.starttime;
     var  endtime = req.body.endtime;
     var  comment = req.body.comment;
+    var  service = req.body.service;
     var  owner = req.user._id;
     var petcaretaker = req.body.takerid;
     var starttimeNumber = parseInt(starttime);
@@ -24,7 +25,7 @@ router.get('/users/book', auth.checkLoggedIn('You must be login', '/login'), fun
     var endNumber = parseInt(end.slice(8,10));
     var hours = 24;
     var numberofdays = 1;
-
+    console.log(service);
     if (starttimeNumber > endtimeNumber) {hours = starttimeNumber - endtimeNumber;}
     else if (starttimeNumber < endtimeNumber) {hours = endtimeNumber - starttimeNumber;}
     else if (starttimeNumber === endtimeNumber) {hours = hours;}
@@ -44,10 +45,11 @@ router.get('/users/book', auth.checkLoggedIn('You must be login', '/login'), fun
         hours,
         numberofdays,
         comment,
+        service,
         owner,
         petcaretaker
       });
-
+console.log(newRequest);
       newRequest.save((err, booking) => {
           if (err) {
               req.flash('error', 'Unable to save');
@@ -72,6 +74,7 @@ router.get('/users/book', auth.checkLoggedIn('You must be login', '/login'), fun
                                     next(err);
                                     return;
                                   }
+                                  console.log(booking);
                                 res.render('booking/booktaker', {booking});
                                 });}
                     });
@@ -83,6 +86,27 @@ router.get('/users/book', auth.checkLoggedIn('You must be login', '/login'), fun
 
 })
 
+
+router.get('/booking/:bookingId', auth.checkLoggedIn('You must be login', '/login'), (req, res, next) => {
+  let bookingId = req.params.bookingId;
+  Request.findById(bookingId, (err, booking) => {
+    if (err) {  next(err); }
+    console.log("HERE IS THE BOOKING");
+
+    Request
+      .findOne({_id: bookingId})
+      .populate("petcaretaker")
+      .exec((err, booking) => {
+        if (err) {
+          next(err);
+          return;
+        }
+        console.log(booking);
+        console.log(bookingId);
+    res.render('booking/bookinginfo', { booking: booking });
+  });
+  });
+});
 
 
 module.exports = router;

@@ -20,11 +20,13 @@ router.get('/profile', auth.checkLoggedIn('You must be login', '/login'), (req, 
         Request
           .find({owner: req.user._id})
           .populate("petcaretaker")
+          .populate("owner")
           .exec((err, booking) => {
             if (err) {
               next(err);
               return;
             }
+            
             console.log(users);
             console.log("----------");
             console.log(booking);
