@@ -67,7 +67,7 @@ var infowindow = new google.maps.InfoWindow();
 
       // Listen for the event fired when the user selects a prediction and retrieve
       // more details for that place.
-      $("#goSearch").addListener('places_changed', function() {
+      $("#goSearch").on('click', function() {
         var places = $("#goSearch").getPlaces();
         if (places.length == 0) {
           return;
