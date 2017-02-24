@@ -6,6 +6,7 @@ const Request           = require("../models/request");
 const User           = require("../models/user");
 
 
+
 router.get('/users/book', auth.checkLoggedIn('You must be login', '/login'), function(req, res, next) {
   res.render('booking/booktaker');
 });

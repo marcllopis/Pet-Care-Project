@@ -24,7 +24,8 @@ const userSchema = new Schema({
     price: Number,
     slogan: String,
     status: String,
-    reviews: Array
+    reviews: [{ type: Schema.Types.ObjectId, ref: 'Rating' }],
+    score: Array
 	}, {
 
   	timestamps: { createdAt: "created_at", updatedAt: "updated_at" }

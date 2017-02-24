@@ -214,6 +214,16 @@ padding-top: 2%;
     background-size: cover;
 }
 
+.banner-login2 {
+    background-image: url("http://localhost:3000/images/bghome.jpg");
+    margin-bottom: 0;
+    height: 85vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
 .center-login {
   margin-left: 0px;
   margin-top: 10px;
