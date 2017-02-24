@@ -58,10 +58,15 @@ button a {
 }
 
 .img-pet-taker-custom{
-  width: 350px;
+  width: 600px;
   height: auto;
   margin: 0 auto;
   text-align: center;
+  -webkit-box-shadow: 11px 14px 38px -21px rgba(0,0,0,0.58);
+  -moz-box-shadow: 11px 14px 38px -21px rgba(0,0,0,0.58);
+  box-shadow: 11px 14px 38px -21px rgba(0,0,0,0.58);
+  border-radius: 10px;
+  border: 1px solid grey;
 }
 
 .img-reviewer-custom{
@@ -242,6 +247,33 @@ padding-top: 2%;
   padding-left: 0px;
 }
 
+.no-pad-sides{
+  padding: 0px;
+  margin-top: 50px;
+}
+
+.img-custom-taker{
+  width: 70%;
+  height: 150px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.img-logo-taker{
+  width: 40px;
+  height: auto;
+  display: inline-block;
+}
+
+.marg-right{
+  padding-top:15px;
+  border-right:1px solid #f9f9f9;
+  height:200px;
+}
+
+.form-taker{
+  width: 160px !important;
+}
 
 /*/////////////////////////////////////////////////////////*/
 /*/////////////////////////////////////////////////////////*/
@@ -254,6 +286,7 @@ padding-top: 2%;
     }
 
     .takers-container-custom{
+    margin: 0 auto;
      width: 70%;
     }
 

@@ -1,28 +1,51 @@
 
-<div class="container takers-container-custom">
+<div class="container-fluid no-pad-sides">
   <div class="takers-header-bg">
     <div class="container takers-header">
       <div class="row "><br>
-          <div class="col-md-4">
-            <img src="https://s-media-cache-ak0.pinimg.com/564x/dd/49/dd/dd49dd83e894321a9402465c98ebc386.jpg" class ="img-responsive img-thumbnail img-custom" alt="">
+          <div class="col-md-3 marg-right">
+            <img src="https://s-media-cache-ak0.pinimg.com/564x/dd/49/dd/dd49dd83e894321a9402465c98ebc386.jpg" class ="img-responsive img-circle img-custom-taker" alt="">
           </div>
-          <div class="col-md-8">
-            <h3><%= takers.name %><span style="float:right"><%= takers.price %>€ /hour</span></h3>
-            <h4><%= takers.slogan %></h4>
-            <p><%= takers.address%></p>
-            <h5></h5>
-            <h4>Availability: <%= takers.status %></h4>
+          <div class="col-md-9" style="padding-left:40px;">
+            <div class="row">
+              <div class="col-md-6">
+                <h3><%= takers.slogan %></h3>
+                <h4><%= takers.name %></h4>
+                <p><%= takers.address%></p>
 
+
+              </div>
+              <div class="col-md-5">
+                <h3><%= takers.price %>€ /hour</h3>
+                <h3><%= takers.status %></h3>
+
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <h4>Services&nbsp;&nbsp;&nbsp;&nbsp;
+                <img class="img-responsive img-logo-taker" src="images/dogwalk.png" title="pet walk" alt="pet walk">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <img class="img-responsive img-logo-taker" src="images/house.png" title="go to your place" alt="go to your place">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <img class="img-responsive img-logo-taker" src="images/homeoffer.png" title="offer his place" alt="offer his place">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <img class="img-responsive img-logo-taker" src="images/dogtrain.png" title="pet training" alt="pet training">
+              </h4>
+              </div>
+            </div>
           </div>
+
       </div>
     </div>
     <br>
   </div>
+</div>
 <hr>
+
+<div class="takers-container-custom">
 <br>
   <div class="row">
-    <div class="col-md-8">
-      <img src="http://slodive.com/wp-content/uploads/2012/11/funny-pug-pictures/makingface.jpg" class ="img-responsive img-pet-taker-custom" alt="">
+    <div class="col-md-7" style="padding-right:40px;">
+      <img src="images/mandog.jpg" class ="img-responsive img-pet-taker-custom" alt="">
     <div class="about">
       <h3>About <%= takers.name %>: </h3>
       <p class="text-justify"><%= takers.description%></p>
@@ -71,29 +94,33 @@
       </div>
     </div>
     </div>
-    <div class="col-md-4 form-group book-taker-box">
+    <div class="col-md-5 form-group book-taker-box">
       <form action="/booking" method="post">
       <div class="form-group">
-        <h3 class="text-center">Book <%= takers.name %> now</h3>
+        <h3 class="text-center">Book <%= takers.name %> now</h3><br>
       </div>
-      <div class="form-group">
-        <label for="daeInput">Start Date</label>
-      <input class="form-control" type="date" name="datefrom">
+      <h4>Set dates for a full day booking:</h4><br>
+
+      <div class="form-group form-inline">
+        <label for="daeInput">From</label>
+      <input class="form-control form-taker" type="date" name="datefrom" placeholder="from">
+      <label for="datteInput">To</label>
+      <input class="form-control form-taker" type="date" name="dateto" placeholder="to">
       </div>
-      <div class="form-group">
-        <label for="datteInput">End Date</label>
-        <input class="form-control" type="date" name="dateto" value="">
+<br>
+      <h4>Set time range:</h4><br>
+
+      <div class="form-group form-inline">
+        <label for="timeInput">From</label>
+        <input class="form-control form-taker" type="time" name="starttime">
+        <label for="timeInput">To</label>
+        <input class="form-control form-taker" type="time" name="endtime">
       </div>
+      <br>
+
       <div class="form-group">
-        <label for="timeInput">Start Time</label>
-        <input class="form-control" type="time" name="starttime">
-      </div>
-      <div class="form-group">
-        <label for="timeInput">End Time</label>
-        <input class="form-control" type="time" name="endtime">
-      </div>
-      <div class="form-group">
-      <label for="serviceInput">Type of service</label>
+        <h4>Type of service:</h4><br>
+
       <!-- <input  list="roles"> -->
       <select class="form-control" name="service" id="service">
         <option value="Walk your pet">Walk your pet </option>
@@ -101,20 +128,19 @@
         <option value="Go to his place with your pet">Go to his place with your pet </option>
         <option value="Pet training">Pet training </option>
       </select>
-      </div>
+    </div><br>
       <div class="form-group">
-        <label for="aboutInput">Additional comments</label>
-        <textarea class="form-control" type="text" name="comment" placeholder="comment"></textarea>
-      </div>
-      <input type="" name="takerid" value="<%= takers._id %>">
-      <button type="submit" class="btn btn-success btn-block">Book now</button>
+        <h4>Additional comments:</h4><br>
+        <textarea class="form-control" style="height:100px;" type="text" name="comment" placeholder="comment"></textarea>
+      </div><br>
+      <input type="hidden" name="takerid" value="<%= takers._id %>">
+      <button type="submit" class="btn btn-success btn-block">Book now</button><br>
       </form>
     </div>
   </div>
 </div>
 <br><br>
 
-<a href="/search">&lArr; Go back to the map view</a>
 
 
 <br><br>
