@@ -125,7 +125,7 @@ button a {
 }
 
 .banner {
-    background-image: url("http://localhost:3000/images/bghome.jpg");
+    background-image: url("../images/bghome.jpg");
     margin-bottom: 0;
     height: 70vh;
     background-repeat: no-repeat;
@@ -210,7 +210,7 @@ padding-top: 2%;
 }
 
 .banner-login {
-    background-image: url("http://localhost:3000/images/bghome.jpg");
+    background-image: url("../images/bghome.jpg");
     margin-bottom: 0;
     height: 90vh;
     background-repeat: no-repeat;
@@ -220,7 +220,7 @@ padding-top: 2%;
 }
 
 .banner-login2 {
-    background-image: url("http://localhost:3000/images/bghome.jpg");
+    background-image: url("../images/bghome.jpg");
     margin-bottom: 0;
     height: 85vh;
     background-repeat: no-repeat;
