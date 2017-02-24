@@ -27,13 +27,11 @@ router.get('/users/book', auth.checkLoggedIn('You must be login', '/login'), fun
     var hours = 24;
     var numberofdays = 1;
     console.log(service);
-    if (starttimeNumber > endtimeNumber) {hours = starttimeNumber - endtimeNumber;}
-    else if (starttimeNumber < endtimeNumber) {hours = endtimeNumber - starttimeNumber;}
+    if (starttimeNumber < endtimeNumber) {hours = endtimeNumber - starttimeNumber;}
     else if (starttimeNumber === endtimeNumber) {hours = hours;}
 
 
-    if (startNumber > endNumber) {numberofdays = startNumber - endNumber;}
-    else if (startNumber < endNumber) {numberofdays = endNumber - startNumber;}
+    if (startNumber < endNumber) {numberofdays = endNumber - startNumber;}
     else if (startNumber === endNumber) {numberofdays = numberofdays;}
 
 

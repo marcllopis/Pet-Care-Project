@@ -28,14 +28,6 @@ router.get('/profile', auth.checkLoggedIn('You must be login', '/login'), (req, 
               return;
             }
 
-
-            console.log(users);
-            console.log("----------");
-            console.log(booking);
-            res.render('dashboard/profile', {users, booking});
-
-
-
             Rating
             .find({owner: req.user._id})
             .populate("owner")
