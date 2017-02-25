@@ -220,6 +220,8 @@
                                       var currentTime = new Date();
                                       booking.forEach((reservation) => {
                                         if(reservation.accepted === false){
+                                        if(reservation.end > currentTime){
+
 
                                       %>
                                       <h4>You have booked <%= reservation.petcaretaker.name %>:</h4>
@@ -229,7 +231,7 @@
                                       <button class="btn btn-success"><a href="/users/<%= reservation.petcaretaker._id %>">Book again</a></button><br>
                                       <hr>
                                       <br>
-                                      <%  }}) %>
+                                      <%  }}}) %>
 
                                     </div>
                                     <div id="acceptedReservations" class="tab-pane">
